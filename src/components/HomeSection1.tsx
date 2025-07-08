@@ -1,0 +1,134 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import news from "@/data/homeNews.json";
+
+export default function HomeSection1() {
+  const featured = news.find((item) => item.id === "2")!;
+  const small1 = news.find((item) => item.id === "1")!;
+  const small2 = news.find((item) => item.id === "3")!;
+
+  return (
+    <section className="p-5">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-y-5 lg:gap-x-5">
+        <div className="order-first lg:order-none col-span-3 grid gap-6 grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 p-0 md:p-1">
+          <Link
+            href={small1.href}
+            className="lg:col-span-1 order-2 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div className="flex flex-row lg:flex-col">
+              <div className="relative w-24 h-20 lg:w-full lg:h-45 flex-shrink-0">
+                <Image
+                  src={small1.image}
+                  alt={small1.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-3 flex items-center lg:items-start">
+                <h2 className="text-sm lg:text-base font-semibold leading-snug">
+                  {small1.title}
+                </h2>
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            href={featured.href}
+            className="lg:col-span-2 lg:row-span-2 order-1 lg:order-none flex flex-col overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div className="relative w-full aspect-[3/2]">
+              <Image
+                src={featured.image}
+                alt={featured.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-4 sm:p-6 flex-1 flex flex-col justify-start gap-4">
+              <h2 className="text-xl sm:text-2xl font-bold leading-tight">
+                {featured.title}
+              </h2>
+              {/* excerpt is hidden on small devices */}
+              {featured.excerpt && (
+                <p className="hidden lg:block text-sm leading-relaxed text-gray-800">
+                  {featured.excerpt}
+                </p>
+              )}
+            </div>
+          </Link>
+
+          <Link
+            href={small2.href}
+            className="lg:col-span-1 order-3 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div className="flex flex-row lg:flex-col">
+              <div className="relative w-24 h-20 lg:w-full lg:h-45 flex-shrink-0">
+                <Image
+                  src={small2.image}
+                  alt={small2.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-3 flex items-center lg:items-start">
+                <h2 className="text-sm lg:text-base font-semibold leading-snug">
+                  {small2.title}
+                </h2>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        <aside className="order-last lg:order-none relative col-span-2 border-t bg-white flex flex-col overflow-hidden shadow-md">
+          <h3 className="p-6 text-3xl">LATEST NEWS</h3>
+          <div
+            className="relative px-6 overflow-y-auto scrollbar-hide"
+            style={{ maxHeight: "450px" }}
+          >
+            <div className="relative space-y-6 pt-2 pb-4">
+              {/* red vertical line inside the scroll area */}
+              <div className="absolute top-10 bottom-0 left-10 w-0.5 bg-red-500 z-0" />
+              {news.slice(0, 10).map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className="relative z-10 flex bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden"
+                >
+                  <div className="flex flex-col justify-start gap-2 p-4 w-full">
+                    <p className="text-sm font-semibold text-red-500 flex items-center">
+                      <span className="w-2 h-2 bg-red-500 rounded-full inline-block mr-2" />
+                      {item.time}
+                    </p>
+                    <h4 className="text-[15px] font-semibold leading-snug">
+                      {item.title}
+                    </h4>
+                  </div>
+                  <div className="relative w-24 flex-shrink-0">
+                    <div className="absolute top-0 left-0 w-full h-full">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="px-6 pb-6 pt-4">
+            <Link
+              href="#"
+              className="block w-full text-center text-red-500 border border-red-500 py-2 font-semibold hover:bg-red-50 transition"
+            >
+              Latest News
+            </Link>
+          </div>
+        </aside>
+      </div>
+    </section>
+  );
+}

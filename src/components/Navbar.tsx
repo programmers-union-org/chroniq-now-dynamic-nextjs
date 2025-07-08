@@ -40,9 +40,9 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="border-b border-red-100 font-sans sticky top-0">
+    <header className="border-b border-red-100 font-sans ">
       {/* desktop top bar */}
-      <div className="hidden md:flex items-center justify-between p-8 px-22">
+      <div className="hidden md:flex items-center justify-between p-8 px-22 ">
         <div className="md:text-sm text-gray-800 font-medium ">
           {dateString}
         </div>
