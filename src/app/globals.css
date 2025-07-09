@@ -4,7 +4,6 @@
   --background: #ffffff;
   --foreground: #171717;
 } */
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -18,7 +17,6 @@
     --foreground: #ededed;
   }
 } */
-
 body {
   background: var(--background);
   color: var(--foreground);
