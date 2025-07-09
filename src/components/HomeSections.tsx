@@ -1,30 +1,22 @@
-import Image from 'next/image'
-import Link from 'next/link'
-
-export type Article = {
-  slug: string
-  title: string
-  image: string
-  time: string
-  date: string
-  excerpt?: string
-}
+import Image from "next/image";
+import Link from "next/link";
+import { Article } from "@/types/homepage";
 
 export type CategoryData = {
-  category: string
-  articles: Article[]
-}
+  category: string;
+  articles: Article[];
+};
 
 export default function HomeSections({ data }: { data: CategoryData }) {
-  const { category, articles } = data
-  const main = articles[0]
-  const others = articles.slice(1, 5)
+  const { category, articles } = data;
+  const main = articles[0];
+  const others = articles.slice(1, 5);
 
   return (
     <section className="border-t border-black py-5">
       {/* heading */}
       <Link href={`/${category.toLowerCase()}`}>
-        <h2 className="text-3xl font-medium mb-6 uppercase text-red-600 flex items-center gap-1">
+        <h2 className="text-2xl sm:text-3xl font-medium mb-6 uppercase text-red-600 flex items-center gap-1">
           {category}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +32,10 @@ export default function HomeSections({ data }: { data: CategoryData }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
         {/* left: latest */}
         <div className="flex flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition rounded-sm">
-          <Link href={`/${category.toLowerCase()}/${main.slug}`} className="flex flex-col h-full">
+          <Link
+            href={`/${category.toLowerCase()}/${main.slug}`}
+            className="flex flex-col h-full"
+          >
             <div className="relative w-full h-[250px] sm:h-[450px]">
               <Image
                 src={main.image}
@@ -86,5 +81,5 @@ export default function HomeSections({ data }: { data: CategoryData }) {
         </div>
       </div>
     </section>
-  )
+  );
 }
