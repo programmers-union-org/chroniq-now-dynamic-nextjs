@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import news from "@/data/homeNews.json";
+import news from "@/data/homeSection1.json"
 
 export default function HomeSection1() {
   const featured = news.find((item) => item.id === "2")!;
@@ -10,7 +8,7 @@ export default function HomeSection1() {
   const small2 = news.find((item) => item.id === "3")!;
 
   return (
-    <section className="p-5">
+    <section className="">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-y-5 lg:gap-x-5">
         <div className="order-first lg:order-none col-span-3 grid gap-6 grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 p-0 md:p-1">
           <Link
