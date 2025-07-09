@@ -1,20 +1,30 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import news from "@/data/homeNews.json";
+import { Article, ArticleWithCategory } from "@/types/homepage";
 
-export default function HomeSection1() {
-  const featured = news.find((item) => item.id === "2")!;
-  const small1 = news.find((item) => item.id === "1")!;
-  const small2 = news.find((item) => item.id === "3")!;
+interface HomeSection1Props {
+  categoryData: {
+    category: string;
+    articles: Article[];
+  };
+  latestArticles: ArticleWithCategory[];
+}
+
+export default function HomeSection1({
+  categoryData,
+  latestArticles,
+}: HomeSection1Props) {
+  const { category, articles } = categoryData;
+  const featured = articles.find((item) => item.id === "2")!;
+  const small1 = articles.find((item) => item.id === "1")!;
+  const small2 = articles.find((item) => item.id === "3")!;
 
   return (
-    <section className="p-5">
+    <section className="">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-y-5 lg:gap-x-5">
         <div className="order-first lg:order-none col-span-3 grid gap-6 grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 p-0 md:p-1">
           <Link
-            href={small1.href}
+            href={`/${category}/${small1.slug}`}
             className="lg:col-span-1 order-2 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-row lg:flex-col">
@@ -35,7 +45,7 @@ export default function HomeSection1() {
           </Link>
 
           <Link
-            href={featured.href}
+            href={`/${category}/${featured.slug}`}
             className="lg:col-span-2 lg:row-span-2 order-1 lg:order-none flex flex-col overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="relative w-full aspect-[3/2]">
@@ -50,7 +60,6 @@ export default function HomeSection1() {
               <h2 className="text-xl sm:text-2xl font-bold leading-tight">
                 {featured.title}
               </h2>
-              {/* excerpt is hidden on small devices */}
               {featured.excerpt && (
                 <p className="hidden lg:block text-sm leading-relaxed text-gray-800">
                   {featured.excerpt}
@@ -60,7 +69,7 @@ export default function HomeSection1() {
           </Link>
 
           <Link
-            href={small2.href}
+            href={`/${category}/${small2.slug}`}
             className="lg:col-span-1 order-3 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-row lg:flex-col">
@@ -82,18 +91,17 @@ export default function HomeSection1() {
         </div>
 
         <aside className="order-last lg:order-none relative col-span-2 border-t bg-white flex flex-col overflow-hidden shadow-md">
-          <h3 className="p-6 text-3xl">LATEST NEWS</h3>
+          <h3 className="p-6 text-2xl sm:text-3xl">LATEST NEWS</h3>
           <div
             className="relative px-6 overflow-y-auto scrollbar-hide"
             style={{ maxHeight: "450px" }}
           >
             <div className="relative space-y-6 pt-2 pb-4">
-              {/* red vertical line inside the scroll area */}
               <div className="absolute top-10 bottom-0 left-10 w-0.5 bg-red-500 z-0" />
-              {news.slice(0, 10).map((item) => (
+              {latestArticles.slice(0, 10).map((item) => (
                 <Link
-                  key={item.id}
-                  href={item.href}
+                  key={`${item.category}-${item.slug}`}
+                  href={`/${item.category}/${item.slug}`}
                   className="relative z-10 flex bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden"
                 >
                   <div className="flex flex-col justify-start gap-2 p-4 w-full">
@@ -106,14 +114,12 @@ export default function HomeSection1() {
                     </h4>
                   </div>
                   <div className="relative w-24 flex-shrink-0">
-                    <div className="absolute top-0 left-0 w-full h-full">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </Link>
               ))}
