@@ -104,7 +104,10 @@ export default function Navbar() {
         <ul className="flex space-x-8 text-sm font-medium text-gray-900">
           {navItems.map((item, i) => (
             <li key={i} className="relative">
-              <Link href="#" className="flex items-center">
+              <Link
+                href={`/${item.toLowerCase()}`}
+                className="flex items-center"
+              >
                 {item}
               </Link>
             </li>
@@ -145,7 +148,7 @@ export default function Navbar() {
           {navItems.map((item, i) => (
             <li key={i} className="flex-shrink-0 ">
               <Link
-                href="#"
+                href={`/${item.toLowerCase()}`}
                 className="flex items-center whitespace-nowrap text-xs"
               >
                 {item}
