@@ -40,7 +40,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="border-b border-red-100 font-sans ">
+    <header className="border-b border-red-100 sticky top-0 z-50 bg-white">
       {/* desktop top bar */}
       <div className="hidden md:flex items-center justify-between p-8 px-22 ">
         <div className="md:text-sm text-gray-800 font-medium ">
@@ -104,7 +104,10 @@ export default function Navbar() {
         <ul className="flex space-x-8 text-sm font-medium text-gray-900">
           {navItems.map((item, i) => (
             <li key={i} className="relative">
-              <Link href="#" className="flex items-center">
+              <Link
+                href={`/${item.toLowerCase()}`}
+                className="flex items-center"
+              >
                 {item}
               </Link>
             </li>
@@ -145,7 +148,7 @@ export default function Navbar() {
           {navItems.map((item, i) => (
             <li key={i} className="flex-shrink-0 ">
               <Link
-                href="#"
+                href={`/${item.toLowerCase()}`}
                 className="flex items-center whitespace-nowrap text-xs"
               >
                 {item}
