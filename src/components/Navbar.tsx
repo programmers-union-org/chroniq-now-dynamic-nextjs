@@ -40,7 +40,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="border-b border-red-100 font-sans sticky top-0 z-50 bg-white">
+    <header className="border-b border-red-100 sticky top-0 z-50 bg-white">
       {/* desktop top bar */}
       <div className="hidden md:flex items-center justify-between p-8 px-22 ">
         <div className="md:text-sm text-gray-800 font-medium ">
