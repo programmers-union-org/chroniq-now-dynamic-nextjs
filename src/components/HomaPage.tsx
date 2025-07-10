@@ -4,6 +4,7 @@ import HomeSections, { CategoryData } from "./HomeSections";
 import ColumnsDesign from "./ColumnsDesign";
 import FiveCardsSection from "@/components/FiveCardsSection";
 import ThreeColSection from "@/components/ThreeColSection";
+import Footer from "@/components/Footer";
 
 //data
 import politicsData from "@/data/politics.json";
@@ -78,6 +79,7 @@ const HomaPage = () => {
         <FiveCardsSection data={relationshipData as CategoryData} />
         <ThreeColSection data={ThreeColSectionData} />
       </section>
+      <Footer />
     </>
   );
 };
