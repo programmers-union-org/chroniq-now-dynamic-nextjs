@@ -37,7 +37,7 @@ export default function HomeSections({ data }: HomeSectionsProps) {
             href={`/${category}/${article.slug}`}
             className="flex items-start bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-lg transition-shadow sm:block"
           >
-            <div className="relative w-24 h-24 flex-shrink-0 sm:w-full sm:h-40">
+            <div className="relative w-24 h-full flex-shrink-0 sm:w-full sm:h-40">
               <Image
                 src={article.image}
                 alt={article.title}
