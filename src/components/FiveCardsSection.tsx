@@ -48,7 +48,7 @@ export default function HomeSections({ data }: HomeSectionsProps) {
             </div>
 
             <div className="p-4 flex-1">
-              <h3 className="font-bold text-lg line-clamp-4">
+              <h3 className="font-bold text-lg leading-snug tracking-tight line-clamp-4">
                 {article.title}
               </h3>
             </div>

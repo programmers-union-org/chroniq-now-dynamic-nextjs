@@ -151,7 +151,7 @@ export default async function CategoryPage({
                 />
               </div>
               <div className="p-3">
-                <h2 className="text-sm lg:text-base font-bold leading-snug">
+                <h2 className="text-sm lg:text-base font-bold leading-snug tracking-tight">
                   {otherPageArticles[0].title}
                 </h2>
               </div>
@@ -174,7 +174,7 @@ export default async function CategoryPage({
                 />
               </div>
               <div className="p-4 sm:p-6 flex-1 flex flex-col justify-start gap-4">
-                <h2 className="text-xl sm:text-2xl font-bold leading-tight">
+                <h2 className="text-xl sm:text-3xl font-bold leading-snug tracking-tight">
                   {featuredArticle.title}
                 </h2>
                 <p className="hidden lg:block text-sm leading-relaxed text-gray-800">
@@ -200,7 +200,7 @@ export default async function CategoryPage({
                 />
               </div>
               <div className="p-3">
-                <h2 className="text-sm lg:text-base font-bold leading-snug">
+                <h2 className="text-sm lg:text-base font-bold leading-snug tracking-tight">
                   {otherPageArticles[1].title}
                 </h2>
               </div>
@@ -219,7 +219,7 @@ export default async function CategoryPage({
                 className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-center justify-between h-[120px]">
-                  <h3 className="text-base font-bold text-gray-900 line-clamp-2 p-2 mt-0">
+                  <h3 className="text-base font-bold text-gray-900 line-clamp-2 p-2 mt-0 leading-snug tracking-tight">
                     {item.title}
                   </h3>
                   <div className="relative w-35 h-full flex-shrink-0">
@@ -259,7 +259,7 @@ export default async function CategoryPage({
                     />
                   </div>
                   <div className="flex-1 p-4 flex flex-col justify-between">
-                    <h4 className="text-base font-bold text-gray-900">
+                    <h4 className="text-base font-bold text-gray-900 leading-snug tracking-tight">
                       {item.title}
                     </h4>
                   </div>

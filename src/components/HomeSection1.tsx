@@ -40,7 +40,7 @@ export default function HomeSection1({
                 />
               </div>
               <div className="p-3 flex items-center lg:items-start">
-                <h2 className="text-sm lg:text-base font-semibold leading-snug">
+                <h2 className="text-sm lg:text-base  tracking-tight font-semibold leading-snug">
                   {small1.title}
                 </h2>
               </div>
@@ -60,10 +60,10 @@ export default function HomeSection1({
               />
             </div>
             <div className="p-4 sm:p-6 flex-1 flex flex-col justify-start gap-4">
-              <h2 className="text-xl sm:text-2xl font-bold leading-tight">
+              <h2 className="text-xl sm:text-3xl font-bold leading-snug tracking-tight">
                 {featured.title}
               </h2>
-              <p className="hidden lg:block text-sm leading-relaxed text-gray-800">
+              <p className="block text-sm leading-relaxed text-gray-800">
                 {featured.shortdescription}
               </p>
             </div>
@@ -82,11 +82,14 @@ export default function HomeSection1({
                   className="object-cover"
                 />
               </div>
+              
               <div className="p-3 flex items-center lg:items-start">
-                <h2 className="text-sm lg:text-base font-semibold leading-snug">
+             
+                <h2 className="text-sm lg:text-base font-semibold leading-snug tracking-tight">
                   {small2.title}
                 </h2>
               </div>
+              
             </div>
           </Link>
         </div>
@@ -110,7 +113,7 @@ export default function HomeSection1({
                       <span className="w-2 h-2 bg-red-500 rounded-full inline-block mr-2" />
                       {item.date}
                     </p>
-                    <h4 className="text-[15px] font-semibold leading-snug">
+                    <h4 className="text-[15px] font-semibold leading-snug tracking-tight">
                       {item.title}
                     </h4>
                   </div>
@@ -128,10 +131,10 @@ export default function HomeSection1({
           </div>
           <div className="px-6 pb-6 pt-4">
             <Link
-              href="#"
+              href="/business"
               className="block w-full text-center text-red-500 border border-red-500 py-2 font-semibold hover:bg-red-50 transition"
             >
-              Latest News
+              More news
             </Link>
           </div>
         </aside>

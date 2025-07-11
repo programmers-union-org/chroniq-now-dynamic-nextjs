@@ -47,7 +47,7 @@ export default function ThreeColSection({ data }: ThreeColSectionProps) {
                       />
                     </div>
                     <div className="flex-1 px-4">
-                      <h3 className="text-base font-bold line-clamp-3">
+                      <h3 className="text-base font-bold line-clamp-3 leading-snug tracking-tight">
                         {article.title}
                       </h3>
                     </div>

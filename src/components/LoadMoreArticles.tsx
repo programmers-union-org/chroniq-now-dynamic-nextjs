@@ -38,7 +38,7 @@ export default function LoadMoreArticles({ articles, category }: Props) {
               />
             </div>
             <div className="flex-1 ml-4">
-              <h3 className="text-base font-bold text-gray-900 line-clamp-2">
+              <h3 className="text-base font-bold text-gray-900 line-clamp-2 leading-snug tracking-tight">
                 {item.title}
               </h3>
               <p className="mt-1 text-sm text-red-600 font-semibold">
@@ -67,7 +67,7 @@ export default function LoadMoreArticles({ articles, category }: Props) {
               />
             </div>
             <div className="flex-1 p-4 flex flex-col justify-between">
-              <h4 className="text-base font-medium text-gray-900">
+              <h4 className="text-base leading-snug tracking-tight text-gray-900 font-bold">
                 {item.title}
               </h4>
             </div>

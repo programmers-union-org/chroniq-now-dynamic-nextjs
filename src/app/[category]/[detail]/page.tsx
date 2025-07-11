@@ -40,7 +40,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
 
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col mb-8">
-          <nav className="text-sm text-gray-500 mb-4 lg:mb-0 lg:mr-4">
+          <nav className="text-sm font-bold  text-gray-500 mb-4 lg:mb-0 lg:mr-4">
             <Link href="/" className="hover:underline">
               HOME
             </Link>
@@ -106,7 +106,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
                       />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-sm font-medium">{item.title}</span>
+                      <span className="text-sm font-bold leading-snug tracking-tight">{item.title}</span>
                       <span className="text-xs text-gray-500 mt-1">
                         {article.date}
                       </span>
@@ -139,7 +139,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="text-lg font-medium mb-2">{item.title}</h3>
+                    <h3 className="text-lg font-bold leading-snug tracking-tight mb-2">{item.title}</h3>
                     <p className="text-sm text-gray-500">{article.date}</p>
                   </div>
                 </Link>

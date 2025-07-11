@@ -59,7 +59,9 @@ export default function Navbar() {
 
       {/* mobile top row */}
       <div className="flex md:hidden items-center justify-between px-4 py-2 ">
-        <div className="text-3xl font-bold text-red-600">Vanguard</div>
+        <Link className="curosr-pointer" href={"/"}>
+          <div className="text-3xl font-bold text-red-600">Vanguard</div>
+        </Link>
         <div className="flex items-center space-x-2">
           <div className="relative w-32">
             <input
@@ -142,14 +144,14 @@ export default function Navbar() {
 
       {/* mobile scrollable nav */}
       <div className="md:hidden scrollbar-hide overflow-x-auto border-t border-red-100">
-        <ul className="flex p-1 space-x-6 text-sm font-medium text-gray-900">
+        <ul className="flex p-1 space-x-6  font-medium text-gray-900">
           {navItems.map((item, i) => (
             <li key={i} className="flex-shrink-0 ">
               <Link
                 href={`/${item.toLowerCase()}`}
                 className="flex items-center whitespace-nowrap text-xs"
               >
-                {item}
+                {item.toLocaleUpperCase()}
               </Link>
             </li>
           ))}
