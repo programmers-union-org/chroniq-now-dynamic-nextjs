@@ -1,55 +1,149 @@
 {
-    "category": "relationship",
-    "articles": [
-      {
-        "id": "1",
-        "slug": "no-rift-between-buhari-tinubu-garba-shehu",
-        "title": "No rift between Buhari, Tinubu  Garba Shehu",
-        "image": "/images/sample/n1.webp",
-        "time": "04:53 am",
-        "date": "2025-07-09",
-        "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development."
-      },
-      {
-        "id": "2",
-        "slug": "2027-presidency-plotting-to-destabilise-us-adc-wails-1",
-        "title": "2027: Presidency plotting to destabilise us, ADC wails",
-        "image": "/images/sample/n3.webp",
-        "time": "04:44 am",
-        "date": "2025-07-08"
-      },
-      {
-        "id": "3",
-        "slug": "nigerias-export-drive-in-danger-trump-plans-tariff-against-brics",
-        "title": "Nigeria’s export drive in danger as Trump plans 10% extra tariff against BRICS",
-        "image": "/images/sample/n2.webp",
-        "time": "04:47 am",
-        "date": "2025-07-07"
-      },
-      {
-        "id": "4",
-        "slug": "emirship-tussle-police-launch-probe-sanusi-bayero-clash-kano",
-        "title": "Emirship tussle: Police launch probe as supporters of Sanusi, Bayero clash in Kano",
-        "image": "/images/sample/n1.webp",
-        "time": "04:40 am",
-        "date": "2025-07-06"
-      },
-      {
-        "id": "5",
-        "slug": "sound-court-rulings-vital-investors-trust-vp-shettima",
-        "title": "Sound court rulings vital for investors’ trust – VP Shettima",
-        "image": "/images/sample/n2.webp",
-        "time": "04:36 am",
-        "date": "2025-07-05"
-      },
-      {
-        "id": "6",
-        "slug": "2027-presidency-plotting-to-destabilise-us-adc-wails-2",
-        "title": "2027: Presidency plotting to destabilise us, ADC wails",
-        "image": "/images/sample/n3.webp",
-        "time": "06:13 am",
-        "date": "2025-07-04"
-      }
-    ]
-  }
-  
+  "category": "relationship",
+  "articles": [
+    {
+      "id": "1",
+      "slug": "no-rift-between-buhari-tinubu-garba-shehu",
+      "title": "No rift between Buhari, Tinubu  Garba Shehu ",
+      "image": "/images/sample/n1.webp",
+      "time": "04:53 am",
+      "date": "2025-07-09",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "2",
+      "slug": "2027-presidency-plotting-to-destabilise-us-adc-wails-1",
+      "title": "2027: Presidency plotting to destabilise us, ADC wails",
+      "image": "/images/sample/n3.webp",
+      "time": "04:44 am",
+      "date": "2025-07-08",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "3",
+      "slug": "nigerias-export-drive-in-danger-trump-plans-tariff-against-brics",
+      "title": "Nigeria’s export drive in danger as Trump plans 10% extra tariff against BRICS",
+      "image": "/images/sample/n2.webp",
+      "time": "04:47 am",
+      "date": "2025-07-07",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "4",
+      "slug": "emirship-tussle-police-launch-probe-sanusi-bayero-clash-kano",
+      "title": "Emirship tussle: Police launch probe as supporters of Sanusi, Bayero clash in Kano",
+      "image": "/images/sample/n1.webp",
+      "time": "04:40 am",
+      "date": "2025-07-06",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "5",
+      "slug": "sound-court-rulings-vital-investors-trust-vp-shettima",
+      "title": "Sound court rulings vital for investors’ trust – VP Shettima",
+      "image": "/images/sample/n2.webp",
+      "time": "04:36 am",
+      "date": "2025-07-05",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "6",
+      "slug": "2027-presidency-plotting-to-destabilise-us-adc-wails-2",
+      "title": "2027: Presidency plotting to destabilise us, ADC wails",
+      "image": "/images/sample/n3.webp",
+      "time": "06:13 am",
+      "date": "2025-07-04",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "7",
+      "slug": "2027-presidency-plotting-to-destabilise-us-adc-wails-1",
+      "title": "2027: Presidency plotting to destabilise us, ADC wails",
+      "image": "/images/sample/n3.webp",
+      "time": "04:44 am",
+      "date": "2025-07-08",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "8",
+      "slug": "nigerias-export-drive-in-danger-trump-plans-tariff-against-brics",
+      "title": "Nigeria’s export drive in danger as Trump plans 10% extra tariff against BRICS",
+      "image": "/images/sample/n2.webp",
+      "time": "04:47 am",
+      "date": "2025-07-07",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "9",
+      "slug": "emirship-tussle-police-launch-probe-sanusi-bayero-clash-kano",
+      "title": "Emirship tussle: Police launch probe as supporters of Sanusi, Bayero clash in Kano",
+      "image": "/images/sample/n1.webp",
+      "time": "04:40 am",
+      "date": "2025-07-06",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "10",
+      "slug": "sound-court-rulings-vital-investors-trust-vp-shettima",
+      "title": "Sound court rulings vital for investors’ trust – VP Shettima",
+      "image": "/images/sample/n2.webp",
+      "time": "04:36 am",
+      "date": "2025-07-05",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "11",
+      "slug": "2027-presidency-plotting-to-destabilise-us-adc-wails-2",
+      "title": "2027: Presidency plotting to destabilise us, ADC wails",
+      "image": "/images/sample/n3.webp",
+      "time": "06:13 am",
+      "date": "2025-07-04",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    },
+    {
+      "id": "12",
+      "slug": "emirship-tussle-police-launch-probe-sanusi-bayero-clash-kano",
+      "title": "Emirship tussle: Police launch probe as supporters of Sanusi, Bayero clash in Kano",
+      "image": "/images/sample/n1.webp",
+      "time": "04:40 am",
+      "date": "2025-07-06",
+      "excerpt": "Garba Shehu has dismissed rumours of a rift, insisting the president and his predecessor remain united and focused on national development.",
+      "description": [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor modi a non rerum cum aspernatur repellat nemo optio alias! Veniam quisquam deserunt, labore voluptatem totam velit facilis error corrupti itaque.Dolorem voluptatibus ducimus incidunt explicabo odio nobis porro et doloribus quasi corrupti quae, unde nesciunt veniam, doloremque consequuntur dicta omnis a ipsam, ipsa dolores perferendis sequi aut quo. Ex, eaque! Quibusdam laboriosam dolores quod, facilis impedit repellendus, quis deleniti ipsum ab voluptate, perferendis reprehenderit sit dolorem necessitatibus eligendi accusantium aspernatur aliquid? Laudantium suscipit atque soluta nesciunt quia sint praesentium culpa?Nulla facere, reiciendis libero veniam quam tempora ea accusantium, eum qui doloremque, at quo assumenda suscipit perferendis repellat? Voluptas tempore distinctio pariatur perferendis facere quae quo beatae voluptatum libero ducimus.Quasi ratione numquam accusamus quae quaerat quo porro molestias laboriosam nam facilis. Suscipit numquam iure laboriosam quis at nemo. Harum pariatur fuga quaerat suscipit consectetur, asperiores officia soluta magni voluptatum!Vel soluta sit sequi libero tenetur fugiat omnis itaque quidem laborum, dicta maxime tempore cupiditate ipsa laboriosam unde, est mollitia recusandae. A qui sunt molestiae modi cupiditate. Quam, aspernatur eligendi?Eligendi, similique alias. Saepe, vitae. Rem eos deleniti exercitationem dicta? Odio minus recusandae tempora aspernatur debitis, delectus hic culpa aperiam ullam expedita, cum distinctio corrupti quod architecto, officiis pariatur nulla!Eligendi inventore culpa ducimus, dolores neque sapiente placeat iste laborum corrupti numquam sit, aut ullam fuga odit qui, vel recusandae? Expedita rem dolorum a eos maxime enim excepturi. Quaerat, ducimus?"
+      ]
+    }
+  ]
+}

@@ -98,9 +98,9 @@ export default function HomeSection1({
           >
             <div className="relative space-y-6 pt-2 pb-4">
               <div className="absolute top-10 bottom-0 left-10 w-0.5 bg-red-500 z-0" />
-              {latestArticles.slice(0, 10).map((item) => (
+              {latestArticles.slice(0, 10).map((item, index) => (
                 <Link
-                  key={`${item.category}-${item.slug}`}
+                  key={`${item.category}-${item.slug}-${index}`}
                   href={`/${item.category}/${item.slug}`}
                   className="relative z-10 flex bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden"
                 >
