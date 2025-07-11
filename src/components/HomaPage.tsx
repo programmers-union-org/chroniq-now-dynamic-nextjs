@@ -1,3 +1,4 @@
+// src/app/page.tsx (or wherever your home page lives)
 import Navbar from "./Navbar";
 import HomeSection1 from "./HomeSection1";
 import HomeSections, { CategoryData } from "./HomeSections";
@@ -6,7 +7,7 @@ import FiveCardsSection from "@/components/FiveCardsSection";
 import ThreeColSection from "@/components/ThreeColSection";
 import Footer from "@/components/Footer";
 
-//data
+// data imports for each section
 import politicsData from "@/data/politics.json";
 import morenewsData from "@/data/morenews.json";
 import metroData from "@/data/metro.json";
@@ -27,46 +28,41 @@ import specialreportData from "@/data/specialreport.json";
 import technologyData from "@/data/technology.json";
 import educationData from "@/data/education.json";
 
-//types
-import { Article, ArticleWithCategory } from "@/types/homepage";
+// types
+import type { ArticleWithCategory } from "@/types/homepage";
 
-const HomaPage = () => {
-  const allCategories: CategoryData[] = [
-    homeSectionData,
-    politicsData,
-    morenewsData,
-    metroData,
-    entertainmentData,
-  ];
+// your lib
+import { getLatestArticles } from "@/lib/readAlljsonfiles";
 
-  const latestArticles: ArticleWithCategory[] = allCategories
-    .flatMap((cat) =>
-      cat.articles.map((a) => ({
-        ...(a as Article),
-        category: cat.category,
-      }))
-    )
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  const ThreeColSectionData: CategoryData[] = [
-    specialreportData,
-    technologyData,
-    educationData,
-  ];
+export default function HomePage() {
+  // grabs the 5 most recent articles (with `category` included)
+  const latestArticles = getLatestArticles() as ArticleWithCategory[];
 
   return (
     <>
       <Navbar />
+
       <section className="p-5 sm:p-20 space-y-10">
+        {/* main hero section + latest list */}
         <HomeSection1
-          categoryData={homeSectionData}
+          categoryData={homeSectionData as CategoryData}
           latestArticles={latestArticles}
         />
+
+        {/* two HomeSections */}
         <HomeSections data={politicsData as CategoryData} />
         <HomeSections data={morenewsData as CategoryData} />
+
+        {/* one ColumnsDesign */}
+        <ColumnsDesign data={columnsData as CategoryData} />
+
+        {/* another HomeSection */}
         <HomeSections data={metroData as CategoryData} />
-        <ColumnsDesign data={columnsData} />
-        <HomeSections data={entertainmentData as CategoryData} />
+
+        {/* FiveCardsSection */}
+        <FiveCardsSection data={entertainmentData as CategoryData} />
+
+        {/* more HomeSections and FiveCardsSections */}
         <HomeSections data={web3Data as CategoryData} />
         <FiveCardsSection data={promotedData as CategoryData} />
         <FiveCardsSection data={videosData as CategoryData} />
@@ -77,11 +73,18 @@ const HomaPage = () => {
         <FiveCardsSection data={healthData as CategoryData} />
         <HomeSections data={sportsData as CategoryData} />
         <FiveCardsSection data={relationshipData as CategoryData} />
-        <ThreeColSection data={ThreeColSectionData} />
+
+        {/* three-column wrap */}
+        <ThreeColSection
+          data={[
+            specialreportData,
+            technologyData,
+            educationData,
+          ] as CategoryData[]}
+        />
       </section>
+
       <Footer />
     </>
   );
-};
-
-export default HomaPage;
+}
