@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Article, ArticleWithCategory } from "@/types/homepage";
+import { ArticleWithCategory } from "@/types/homepage";
+import { CategoryData } from "./HomeSections";
 
 interface HomeSection1Props {
-  categoryData: {
-    category: string;
-    articles: Article[];
-  };
+  categoryData: CategoryData;
   latestArticles: ArticleWithCategory[];
 }
 
@@ -15,9 +13,14 @@ export default function HomeSection1({
   latestArticles,
 }: HomeSection1Props) {
   const { category, articles } = categoryData;
-  const featured = articles.find((item) => item.id === "2")!;
-  const small1 = articles.find((item) => item.id === "1")!;
-  const small2 = articles.find((item) => item.id === "3")!;
+
+  // sort by date descending
+  const sorted = [...articles].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  const featured = sorted[0]!;
+  const small1 = sorted[1]!;
+  const small2 = sorted[2]!;
 
   return (
     <section className="">
@@ -60,11 +63,9 @@ export default function HomeSection1({
               <h2 className="text-xl sm:text-2xl font-bold leading-tight">
                 {featured.title}
               </h2>
-              {featured.excerpt && (
-                <p className="hidden lg:block text-sm leading-relaxed text-gray-800">
-                  {featured.excerpt}
-                </p>
-              )}
+              <p className="hidden lg:block text-sm leading-relaxed text-gray-800">
+                {featured.shortdescription}
+              </p>
             </div>
           </Link>
 
@@ -107,7 +108,7 @@ export default function HomeSection1({
                   <div className="flex flex-col justify-start gap-2 p-4 w-full">
                     <p className="text-sm font-semibold text-red-500 flex items-center">
                       <span className="w-2 h-2 bg-red-500 rounded-full inline-block mr-2" />
-                      {item.time}
+                      {item.date}
                     </p>
                     <h4 className="text-[15px] font-semibold leading-snug">
                       {item.title}

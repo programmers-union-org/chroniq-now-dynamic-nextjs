@@ -9,12 +9,12 @@ export type Article = {
   title: string;
   image: string;
   date: string;
-  excerpt?: string;
+  shortdescription?: string;
 };
 
-type Props = { articles: Article[] };
+type Props = { articles: Article[]; category: string };
 
-export default function LoadMoreArticles({ articles }: Props) {
+export default function LoadMoreArticles({ articles, category }: Props) {
   const CHUNK = 11;
   const [visible, setVisible] = useState(0);
   const toShow = articles.slice(0, visible);
@@ -26,7 +26,7 @@ export default function LoadMoreArticles({ articles }: Props) {
         {toShow.map((item) => (
           <Link
             key={item.id}
-            href={`/${item.slug}`}
+            href={`/${category}/${item.slug}`}
             className="flex items-center overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
           >
             <div className="relative w-24 h-24 flex-shrink-0">
@@ -54,7 +54,7 @@ export default function LoadMoreArticles({ articles }: Props) {
         {toShow.map((item) => (
           <Link
             key={item.id}
-            href={`/${item.slug}`}
+            href={`/${category}/${item.slug}`}
             className="flex flex-col h-full overflow-hidden border border-gray-100 shadow-sm"
           >
             <div className="w-full h-48 overflow-hidden">

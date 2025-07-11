@@ -20,16 +20,12 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    "HOME",
-    "NEWS",
-    "E-EDITIONS",
-    "POLITICS",
-    "METRO",
-    "BUSINESS",
-    "SPORTS",
-    "EDITORIAL",
-    "COLUMNS",
-    "ALLURE",
+    "business",
+    "health",
+    "politics",
+    "science",
+    "sports",
+    "technology",
   ];
 
   const bottomLinks = [
@@ -46,7 +42,9 @@ export default function Navbar() {
         <div className="md:text-sm text-gray-800 font-medium ">
           {dateString}
         </div>
-        <div className="text-5xl font-bold text-red-600">Vanguard</div>
+        <Link className="curosr-pointer" href={"/"}>
+          <div className="text-5xl font-bold text-red-600">Vanguard</div>
+        </Link>
         <div className="relative w-64">
           <input
             type="text"
@@ -108,7 +106,7 @@ export default function Navbar() {
                 href={`/${item.toLowerCase()}`}
                 className="flex items-center"
               >
-                {item}
+                {item.toUpperCase()}
               </Link>
             </li>
           ))}

@@ -16,8 +16,8 @@ interface DetailPageProps {
 }
 
 export default async function DetailPage({ params }: DetailPageProps) {
-  const { category, detail } = await params;
-  const slug = detail;
+  const { category, detail: slug } = await params;
+
   const article = getArticleBySlug(slug);
   const latestArticles = getLatestArticles(10);
   const categoryArticles = getArticlesByCategory(category);
@@ -34,40 +34,35 @@ export default async function DetailPage({ params }: DetailPageProps) {
     );
   }
 
-  const formattedDate = new Date(article.date).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-
   return (
     <>
       <Navbar />
 
       <main className="container mx-auto px-4 py-8">
-        {/* STACK ON MOBILE, ROW ON LARGE */}
+        <div className="flex flex-col mb-8">
+          <nav className="text-sm text-gray-500 mb-4 lg:mb-0 lg:mr-4">
+            <Link href="/" className="hover:underline">
+              HOME
+            </Link>
+            <span className="mx-1">»</span>
+            <Link href={`/${category}`} className="hover:underline">
+              {category.toUpperCase()}
+            </Link>
+            <span className="mx-1">»</span>
+            <span>{article.title}</span>
+          </nav>
+
+          <div className="flex space-x-4 items-center">
+            <span className="text-red-600 uppercase text-sm font-semibold">
+              {category}
+            </span>
+            <span className="text-teal-600 text-sm">{article.date}</span>
+          </div>
+        </div>
+
         <div className="flex flex-col lg:flex-row w-full">
-          {/* Main article */}
-          <article className="w-full lg:flex-[0_0_70%] lg:pr-8 mb-8 lg:mb-0">
-            <nav className="text-sm text-gray-500 mb-4">
-              <Link href="/" className="hover:underline">
-                HOME
-              </Link>
-              <span className="mx-1">»</span>
-              <Link href={`/${category}`} className="hover:underline">
-                {category.toUpperCase()}
-              </Link>
-              <span className="mx-1">»</span>
-              <span>{article.title}</span>
-            </nav>
-
-            <div className="flex space-x-4 items-center mb-4">
-              <span className="text-red-600 uppercase text-sm font-semibold">
-                {category}
-              </span>
-              <span className="text-teal-600 text-sm">{formattedDate}</span>
-            </div>
-
+          {/* article */}
+          <article className="w-full lg:w-2/3 lg:pr-8 mb-12 lg:mb-0">
             <h1 className="text-4xl font-bold mb-6">{article.title}</h1>
 
             <div className="relative w-full h-[400px] mb-6">
@@ -79,26 +74,28 @@ export default async function DetailPage({ params }: DetailPageProps) {
               />
             </div>
 
-            <p className="text-lg leading-relaxed mb-6">{article.excerpt}</p>
+            <p className="text-lg leading-relaxed mb-6 font-bold">
+              {article.shortdescription}
+            </p>
 
-            {article.description?.map((para, idx) => (
-              <p key={idx} className="text-base leading-relaxed mb-4">
-                {para}
+            {article.description && (
+              <p className="text-base leading-relaxed mb-4">
+                {article.description}
               </p>
-            ))}
+            )}
           </article>
 
-          {/* Latest news (max 5, one per row on mobile) */}
-          <aside className="w-full lg:flex-[0_0_30%] sticky top-45 self-start">
+          {/* latest News */}
+          <aside className="w-full lg:w-1/3 sticky top-50 self-start">
             <h2 className="text-xl font-semibold mb-4 border-b pb-2">
               Latest News
             </h2>
             <ul className="space-y-4">
-              {latestArticles.slice(0, 5).map((item, index) => (
-                <li key={`${item.slug}-${index}`}>
+              {latestArticles.slice(0, 5).map((item) => (
+                <li key={item.slug}>
                   <Link
-                    href={`/${category}/${item.slug}`}
-                    className="flex items-center shadow-sm hover:bg-gray-50"
+                    href={`/${item.category}/${item.slug}`}
+                    className="flex items-center shadow-sm hover:bg-gray-50 transition"
                   >
                     <div className="relative w-20 h-20 flex-shrink-0 mr-3">
                       <Image
@@ -111,11 +108,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
                     <div className="flex flex-col">
                       <span className="text-sm font-medium">{item.title}</span>
                       <span className="text-xs text-gray-500 mt-1">
-                        {new Date(item.date).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        })}
+                        {article.date}
                       </span>
                     </div>
                   </Link>
@@ -125,17 +118,17 @@ export default async function DetailPage({ params }: DetailPageProps) {
           </aside>
         </div>
 
-        {/* More in [Category] */}
+        {/* more in this category */}
         <section className="mt-12 w-full">
           <h2 className="text-2xl font-semibold mb-6">
             More in {category.charAt(0).toUpperCase() + category.slice(1)}
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {moreArticles.map((item, index) => (
-              <li key={`${item.slug}-${index}`}>
+              <li key={item.slug + index}>
                 <Link
                   href={`/${category}/${item.slug}`}
-                  className="block shadow-sm hover:bg-gray-50 overflow-hidden h-full"
+                  className="block shadow-sm hover:bg-gray-50 overflow-hidden h-full transition"
                 >
                   <div className="relative w-full h-40">
                     <Image
@@ -147,13 +140,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
                   </div>
                   <div className="p-4">
                     <h3 className="text-lg font-medium mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-500">
-                      {new Date(item.date).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
-                    </p>
+                    <p className="text-sm text-gray-500">{article.date}</p>
                   </div>
                 </Link>
               </li>

@@ -1,54 +1,45 @@
 import fs from "fs";
 import path from "path";
-
-export type Article = {
-  category: string;
-  id: string;
-  slug: string;
-  title: string;
-  image: string;
-  time: string;
-  date: string;
-  excerpt?: string;
-  description?: string[];
-};
-
-export type NewsData = {
-  category: string;
-  articles: Article[];
-};
+import { Article } from "@/types/homepage";
 
 const dataDir = path.join(process.cwd(), "src", "data");
 
-export function loadAllNews(): NewsData[] {
+// read every json files from data folder
+export function loadAllArticles(): Article[] {
   const files = fs
     .readdirSync(dataDir)
     .filter((file) => file.endsWith(".json"));
 
-  return files.map((file) => {
+  return files.flatMap((file) => {
     const filePath = path.join(dataDir, file);
     const fileContent = fs.readFileSync(filePath, "utf-8");
-    const data: NewsData = JSON.parse(fileContent);
-    return data;
+    const articles: Article[] = JSON.parse(fileContent);
+    return articles;
   });
 }
 
+//return all articles across all data files.
+
 export function getAllArticles(): Article[] {
-  return loadAllNews().flatMap((section) => section.articles);
+  return loadAllArticles();
 }
 
+//return the most recent `limit` articles, sorted by date descending.
+
 export function getLatestArticles(limit = 5): Article[] {
-  const all = getAllArticles();
-  return all
+  return getAllArticles()
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit);
 }
+
+//find a single article by its slug.
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return getAllArticles().find((article) => article.slug === slug);
 }
 
+//filter articles by category.
+
 export function getArticlesByCategory(category: string): Article[] {
-  const section = loadAllNews().find((s) => s.category === category);
-  return section ? section.articles : [];
+  return getAllArticles().filter((article) => article.category === category);
 }

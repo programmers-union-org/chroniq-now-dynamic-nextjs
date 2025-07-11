@@ -49,7 +49,7 @@ export default function HomeSections({ data }: { data: CategoryData }) {
                 {main.title}
               </h3>
               <p className="mt-3 text-gray-700 text-md hidden sm:block">
-                {main.excerpt}
+                {main.shortdescription}
               </p>
             </div>
           </Link>
@@ -57,9 +57,9 @@ export default function HomeSections({ data }: { data: CategoryData }) {
 
         {/* right: next 4 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
-          {others.map((item) => (
+          {others.map((item, index) => (
             <Link
-              key={item.slug}
+              key={item.slug + index}
               href={`/${category.toLowerCase()}/${item.slug}`}
               className="flex flex-row sm:flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition rounded-sm"
             >
