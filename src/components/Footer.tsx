@@ -229,18 +229,6 @@ export default function Footer() {
             <Link href="#" className="hover:underline">
               Privacy Policy
             </Link>
-            <span>|</span>
-            <Link href="#" className="hover:underline">
-              Casino Non AAMS
-            </Link>
-            <span>|</span>
-            <Link href="#" className="hover:underline">
-              Online Casino ohne OASIS
-            </Link>
-            <span>|</span>
-            <Link href="#" className="hover:underline">
-              Casino Uden Rofus
-            </Link>
           </div>
         </div>
       </div>

@@ -6,12 +6,12 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LoadMoreArticles from "@/components/LoadMoreArticles";
-import { Article } from "@/types/homepage";
+import type { Article } from "@/types/homepage";
 
-interface CategoryData {
-  category: string;
-  articles: Article[];
-}
+// interface CategoryData {
+//   category: string;
+//   articles: Article[];
+// }
 
 export async function generateStaticParams() {
   const dataDir = path.join(process.cwd(), "src", "data");
@@ -24,24 +24,30 @@ export async function generateStaticParams() {
 export default async function CategoryPage({
   params,
 }: {
-  params: Promise<{ category: string }>;
+  params:Promise< { category: string }>;
 }) {
-  const dataPath = path.join(
-    process.cwd(),
-    "src",
-    "data",
-    `${(await params).category}.json`
-  );
-  let categoryData: CategoryData;
+  const category = (await params).category;
+  const dataPath = path.join(process.cwd(), "src", "data", `${category}.json`);
 
+  let raw: string;
   try {
-    const raw = await fs.readFile(dataPath, "utf8");
-    categoryData = JSON.parse(raw);
+    raw = await fs.readFile(dataPath, "utf8");
   } catch {
     return notFound();
   }
 
-  const { category, articles } = categoryData;
+  // parse the file as an array of Article
+  let articles: Article[];
+  try {
+    articles = JSON.parse(raw) as Article[];
+  } catch {
+    return notFound();
+  }
+
+  // wrap into your CategoryData shape
+  // const categoryData: CategoryData = { category, articles };
+
+  // pagination / slicing
   const pageArticles = articles.slice(0, 11);
   const featuredArticle = pageArticles[0];
   const otherPageArticles = pageArticles.slice(1);
@@ -52,6 +58,7 @@ export default async function CategoryPage({
       <Navbar />
 
       <main className="container mx-auto py-8 px-2">
+        {/* breadcrumb + title */}
         <nav aria-label="Breadcrumb" className="mb-2 text-sm">
           <ol className="flex items-center">
             <li>
@@ -65,6 +72,7 @@ export default async function CategoryPage({
             <li className="uppercase text-gray-900 text-md">{category}</li>
           </ol>
         </nav>
+
         <div className="flex items-center mb-8">
           <div className="w-0.5 h-8 bg-red-600 mr-3" />
           <h1 className="uppercase text-2xl sm:text-3xl text-gray-900">
@@ -72,6 +80,7 @@ export default async function CategoryPage({
           </h1>
         </div>
 
+        {/* mobile layout */}
         <div className="block lg:hidden space-y-6">
           <Link
             href={`/${category}/${featuredArticle.slug}`}
@@ -87,11 +96,9 @@ export default async function CategoryPage({
             </div>
             <div className="p-2">
               <h2 className="text-xl font-bold">{featuredArticle.title}</h2>
-              {featuredArticle.excerpt && (
-                <p className="mt-2 text-sm text-gray-800">
-                  {featuredArticle.excerpt}
-                </p>
-              )}
+              <p className="mt-2 text-sm text-gray-800">
+                {featuredArticle.shortdescription}
+              </p>
             </div>
             <div className="w-full bg-white border-t border-gray-100 text-red-600 text-center py-2 font-semibold">
               {featuredArticle.date}
@@ -99,9 +106,9 @@ export default async function CategoryPage({
           </Link>
 
           <div className="space-y-4">
-            {otherPageArticles.map((item) => (
+            {otherPageArticles.map((item, i) => (
               <Link
-                key={item.id}
+                key={item.slug + i}
                 href={`/${category}/${item.slug}`}
                 className="flex items-center overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
@@ -126,8 +133,11 @@ export default async function CategoryPage({
           </div>
         </div>
 
+        {/* desktop layout */}
         <div className="hidden lg:grid grid-cols-1 lg:grid-cols-5 gap-y-5 lg:gap-x-5">
+          {/* left grid */}
           <div className="col-span-1 lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-6">
+            {/* small card */}
             <Link
               href={`/${category}/${otherPageArticles[0].slug}`}
               className="flex flex-col overflow-hidden shadow-xs hover:shadow-lg transition-shadow"
@@ -141,7 +151,7 @@ export default async function CategoryPage({
                 />
               </div>
               <div className="p-3">
-                <h2 className="text-sm lg:text-base font-bold leading-snug">
+                <h2 className="text-sm lg:text-base font-bold leading-snug tracking-tight">
                   {otherPageArticles[0].title}
                 </h2>
               </div>
@@ -150,6 +160,7 @@ export default async function CategoryPage({
               </div>
             </Link>
 
+            {/* featured */}
             <Link
               href={`/${category}/${featuredArticle.slug}`}
               className="flex flex-col row-span-2 col-span-2 overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
@@ -163,20 +174,19 @@ export default async function CategoryPage({
                 />
               </div>
               <div className="p-4 sm:p-6 flex-1 flex flex-col justify-start gap-4">
-                <h2 className="text-xl sm:text-2xl font-bold leading-tight">
+                <h2 className="text-xl sm:text-3xl font-bold leading-snug tracking-tight">
                   {featuredArticle.title}
                 </h2>
-                {featuredArticle.excerpt && (
-                  <p className="hidden lg:block text-sm leading-relaxed text-gray-800">
-                    {featuredArticle.excerpt}
-                  </p>
-                )}
+                <p className="hidden lg:block text-sm leading-relaxed text-gray-800">
+                  {featuredArticle.shortdescription}
+                </p>
               </div>
               <div className="w-full bg-white border shadow-sm border-gray-100 text-red-600 text-center py-2 font-semibold">
                 {featuredArticle.date}
               </div>
             </Link>
 
+            {/* second small */}
             <Link
               href={`/${category}/${otherPageArticles[1].slug}`}
               className="flex flex-col overflow-hidden shadow-xs hover:shadow-lg transition-shadow"
@@ -190,7 +200,7 @@ export default async function CategoryPage({
                 />
               </div>
               <div className="p-3">
-                <h2 className="text-sm lg:text-base font-bold leading-snug">
+                <h2 className="text-sm lg:text-base font-bold leading-snug tracking-tight">
                   {otherPageArticles[1].title}
                 </h2>
               </div>
@@ -200,15 +210,16 @@ export default async function CategoryPage({
             </Link>
           </div>
 
+          {/* right grid */}
           <div className="col-span-1 lg:col-span-2 space-y-6">
-            {otherPageArticles.slice(2, 6).map((item) => (
+            {otherPageArticles.slice(2, 6).map((item, i) => (
               <Link
-                key={item.id}
+                key={item.slug + i}
                 href={`/${category}/${item.slug}`}
                 className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-center justify-between h-[120px]">
-                  <h3 className="text-base font-bold text-gray-900 line-clamp-2 p-2 mt-0">
+                  <h3 className="text-base font-bold text-gray-900 line-clamp-2 p-2 mt-0 leading-snug tracking-tight">
                     {item.title}
                   </h3>
                   <div className="relative w-35 h-full flex-shrink-0">
@@ -228,12 +239,13 @@ export default async function CategoryPage({
           </div>
         </div>
 
+        {/* bottom grid */}
         {bottomArticles.length > 0 && (
           <section className="hidden lg:block mt-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-              {bottomArticles.map((item) => (
+              {bottomArticles.map((item, i) => (
                 <Link
-                  key={item.id}
+                  key={item.slug + i}
                   href={`/${category}/${item.slug}`}
                   className="flex flex-col h-full overflow-hidden border border-gray-100 shadow-sm"
                 >
@@ -247,7 +259,7 @@ export default async function CategoryPage({
                     />
                   </div>
                   <div className="flex-1 p-4 flex flex-col justify-between">
-                    <h4 className="text-base font-bold text-gray-900">
+                    <h4 className="text-base font-bold text-gray-900 leading-snug tracking-tight">
                       {item.title}
                     </h4>
                   </div>
@@ -260,8 +272,12 @@ export default async function CategoryPage({
           </section>
         )}
 
+        {/* load more */}
         {articles.length > 11 && (
-          <LoadMoreArticles articles={articles.slice(11)} />
+          <LoadMoreArticles
+            articles={articles.slice(11).map((a) => ({ ...a, id: a.slug }))}
+            category={category}
+          />
         )}
       </main>
 

@@ -45,11 +45,11 @@ export default function HomeSections({ data }: { data: CategoryData }) {
               />
             </div>
             <div className="p-4 flex flex-col flex-1">
-              <h3 className="mt-2 text-2xl sm:text-2xl font-bold hover:text-red-600">
+              <h3 className="mt-2 text-xl sm:text-2xl leading-snug tracking-tight font-bold hover:text-red-600">
                 {main.title}
               </h3>
               <p className="mt-3 text-gray-700 text-md hidden sm:block">
-                {main.excerpt}
+                {main.shortdescription}
               </p>
             </div>
           </Link>
@@ -57,9 +57,9 @@ export default function HomeSections({ data }: { data: CategoryData }) {
 
         {/* right: next 4 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
-          {others.map((item) => (
+          {others.map((item, index) => (
             <Link
-              key={item.slug}
+              key={item.slug + index}
               href={`/${category.toLowerCase()}/${item.slug}`}
               className="flex flex-row sm:flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition rounded-sm"
             >
@@ -72,7 +72,7 @@ export default function HomeSections({ data }: { data: CategoryData }) {
                 />
               </div>
               <div className="p-3 flex-1 flex flex-col justify-center">
-                <h4 className="text-base sm:text-xl font-semibold leading-snug hover:text-red-600">
+                <h4 className="text-sm sm:text-xl font-semibold leading-snug tracking-tight hover:text-red-600">
                   {item.title}
                 </h4>
               </div>

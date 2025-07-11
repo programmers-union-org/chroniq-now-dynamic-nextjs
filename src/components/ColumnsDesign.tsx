@@ -32,7 +32,7 @@ export default function ColumnsDesign({ data }: ColumnsProps) {
         <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory pb-4 scroll-container">
           {articles.map((item) => (
             <Link
-              key={item.id}
+              key={item.slug}
               href={`/${category}/${item.slug}`}
               className="snap-start flex-shrink-0 w-80 h-auto border-2 border-[#ffe6e6] rounded-lg overflow-hidden flex"
             >
@@ -40,7 +40,7 @@ export default function ColumnsDesign({ data }: ColumnsProps) {
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-2 h-2 bg-red-600 rounded-full" />
                   <span className="text-red-600 text-sm font-bold">
-                    {item.time}
+                    {item.slug}
                   </span>
                 </div>
                 <h3 className=" text-[1rem] font-semibold leading-snug ">

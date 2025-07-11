@@ -1,11 +1,11 @@
 export interface Article {
-  id: string;
+  category: string;
   slug: string;
   title: string;
   image: string;
-  time: string;
   date: string;
-  excerpt?: string;
+  shortdescription: string;
+  description: string;
 }
 
 export interface ArticleWithCategory extends Article {

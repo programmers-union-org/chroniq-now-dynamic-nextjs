@@ -4,11 +4,11 @@ import { Article } from "@/types/homepage";
 
 export interface CategoryData {
   category: string;
-  articles: Article[]; // at least 4 items
+  articles: Article[];
 }
 
 interface ThreeColSectionProps {
-  data: CategoryData[]; // exactly 3 items
+  data: CategoryData[];
 }
 
 export default function ThreeColSection({ data }: ThreeColSectionProps) {
@@ -26,9 +26,9 @@ export default function ThreeColSection({ data }: ThreeColSectionProps) {
               </Link>
 
               <div className="space-y-6">
-                {col.articles.slice(0, 4).map((article) => (
+                {col.articles.slice(0, 4).map((article, index) => (
                   <Link
-                    key={article.id}
+                    key={article.slug + index}
                     href={`/${col.category.toLowerCase()}/${article.slug}`}
                     className="
                       flex items-center
@@ -47,7 +47,7 @@ export default function ThreeColSection({ data }: ThreeColSectionProps) {
                       />
                     </div>
                     <div className="flex-1 px-4">
-                      <h3 className="text-base font-bold line-clamp-3">
+                      <h3 className="text-base font-bold line-clamp-3 leading-snug tracking-tight">
                         {article.title}
                       </h3>
                     </div>

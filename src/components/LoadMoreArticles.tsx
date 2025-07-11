@@ -9,12 +9,12 @@ export type Article = {
   title: string;
   image: string;
   date: string;
-  excerpt?: string;
+  shortdescription?: string;
 };
 
-type Props = { articles: Article[] };
+type Props = { articles: Article[]; category: string };
 
-export default function LoadMoreArticles({ articles }: Props) {
+export default function LoadMoreArticles({ articles, category }: Props) {
   const CHUNK = 11;
   const [visible, setVisible] = useState(0);
   const toShow = articles.slice(0, visible);
@@ -26,7 +26,7 @@ export default function LoadMoreArticles({ articles }: Props) {
         {toShow.map((item) => (
           <Link
             key={item.id}
-            href={`/${item.slug}`}
+            href={`/${category}/${item.slug}`}
             className="flex items-center overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
           >
             <div className="relative w-24 h-24 flex-shrink-0">
@@ -38,7 +38,7 @@ export default function LoadMoreArticles({ articles }: Props) {
               />
             </div>
             <div className="flex-1 ml-4">
-              <h3 className="text-base font-bold text-gray-900 line-clamp-2">
+              <h3 className="text-base font-bold text-gray-900 line-clamp-2 leading-snug tracking-tight">
                 {item.title}
               </h3>
               <p className="mt-1 text-sm text-red-600 font-semibold">
@@ -54,7 +54,7 @@ export default function LoadMoreArticles({ articles }: Props) {
         {toShow.map((item) => (
           <Link
             key={item.id}
-            href={`/${item.slug}`}
+            href={`/${category}/${item.slug}`}
             className="flex flex-col h-full overflow-hidden border border-gray-100 shadow-sm"
           >
             <div className="w-full h-48 overflow-hidden">
@@ -67,7 +67,7 @@ export default function LoadMoreArticles({ articles }: Props) {
               />
             </div>
             <div className="flex-1 p-4 flex flex-col justify-between">
-              <h4 className="text-base font-medium text-gray-900">
+              <h4 className="text-base leading-snug tracking-tight text-gray-900 font-bold">
                 {item.title}
               </h4>
             </div>

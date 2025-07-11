@@ -31,9 +31,9 @@ export default function HomeSections({ data }: HomeSectionsProps) {
       </Link>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {displayArticles.map((article) => (
+        {displayArticles.map((article, index) => (
           <Link
-            key={article.id}
+            key={article.slug + index}
             href={`/${category}/${article.slug}`}
             className="flex items-start bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-lg transition-shadow sm:block"
           >
@@ -48,7 +48,7 @@ export default function HomeSections({ data }: HomeSectionsProps) {
             </div>
 
             <div className="p-4 flex-1">
-              <h3 className="font-bold text-lg line-clamp-4">
+              <h3 className="font-bold text-lg leading-snug tracking-tight line-clamp-4">
                 {article.title}
               </h3>
             </div>

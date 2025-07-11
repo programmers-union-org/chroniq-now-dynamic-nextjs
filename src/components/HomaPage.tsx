@@ -1,87 +1,66 @@
 import Navbar from "./Navbar";
 import HomeSection1 from "./HomeSection1";
 import HomeSections, { CategoryData } from "./HomeSections";
-import ColumnsDesign from "./ColumnsDesign";
 import FiveCardsSection from "@/components/FiveCardsSection";
 import ThreeColSection from "@/components/ThreeColSection";
 import Footer from "@/components/Footer";
 
-//data
-import politicsData from "@/data/politics.json";
-import morenewsData from "@/data/morenews.json";
-import metroData from "@/data/metro.json";
-import columnsData from "@/data/columns.json";
-import homeSectionData from "@/data/homeSection1.json";
-import entertainmentData from "@/data/entertainment.json";
-import web3Data from "@/data/web3.json";
-import promotedData from "@/data/promoted.json";
-import videosData from "@/data/videos.json";
-import NaijaDiasporaData from "@/data/NaijaDiaspora.json";
-import icymiData from "@/data/icymi.json";
-import cartoonData from "@/data/cartoon.json";
-import businessData from "@/data/business.json";
-import healthData from "@/data/health.json";
-import sportsData from "@/data/sports.json";
-import relationshipData from "@/data/relationship.json";
-import specialreportData from "@/data/specialreport.json";
-import technologyData from "@/data/technology.json";
-import educationData from "@/data/education.json";
+import { getLatestArticles } from "@/lib/readAlljsonfiles";
+import type { ArticleWithCategory, Article } from "@/types/homepage";
 
-//types
-import { Article, ArticleWithCategory } from "@/types/homepage";
+import businessJson from "@/data/business.json";
+import politicsJson from "@/data/politics.json";
+import healthJson from "@/data/health.json";
+import sportsJson from "@/data/sports.json";
+import scienceJson from "@/data/science.json";
+import technologyJson from "@/data/technology.json";
 
-const HomaPage = () => {
-  const allCategories: CategoryData[] = [
-    homeSectionData,
-    politicsData,
-    morenewsData,
-    metroData,
-    entertainmentData,
-  ];
+export default function HomePage() {
+  const latestArticles = getLatestArticles() as ArticleWithCategory[];
 
-  const latestArticles: ArticleWithCategory[] = allCategories
-    .flatMap((cat) =>
-      cat.articles.map((a) => ({
-        ...(a as Article),
-        category: cat.category,
-      }))
-    )
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  const ThreeColSectionData: CategoryData[] = [
-    specialreportData,
-    technologyData,
-    educationData,
-  ];
+  const businessSection: CategoryData = {
+    category: "business",
+    articles: businessJson as Article[],
+  };
+  const politicsSection: CategoryData = {
+    category: "politics",
+    articles: politicsJson as Article[],
+  };
+  const healthSection: CategoryData = {
+    category: "health",
+    articles: healthJson as Article[],
+  };
+  const sportsSection: CategoryData = {
+    category: "sports",
+    articles: sportsJson as Article[],
+  };
+  const scienceSection: CategoryData = {
+    category: "science",
+    articles: scienceJson as Article[],
+  };
+  const technologySection: CategoryData = {
+    category: "technology",
+    articles: technologyJson as Article[],
+  };
 
   return (
     <>
       <Navbar />
+
       <section className="p-5 sm:p-20 space-y-10">
         <HomeSection1
-          categoryData={homeSectionData}
+          categoryData={businessSection}
           latestArticles={latestArticles}
         />
-        <HomeSections data={politicsData as CategoryData} />
-        <HomeSections data={morenewsData as CategoryData} />
-        <HomeSections data={metroData as CategoryData} />
-        <ColumnsDesign data={columnsData} />
-        <HomeSections data={entertainmentData as CategoryData} />
-        <HomeSections data={web3Data as CategoryData} />
-        <FiveCardsSection data={promotedData as CategoryData} />
-        <FiveCardsSection data={videosData as CategoryData} />
-        <HomeSections data={NaijaDiasporaData as CategoryData} />
-        <HomeSections data={icymiData as CategoryData} />
-        <FiveCardsSection data={cartoonData as CategoryData} />
-        <HomeSections data={businessData as CategoryData} />
-        <FiveCardsSection data={healthData as CategoryData} />
-        <HomeSections data={sportsData as CategoryData} />
-        <FiveCardsSection data={relationshipData as CategoryData} />
-        <ThreeColSection data={ThreeColSectionData} />
+        <HomeSections data={politicsSection} />
+        <HomeSections data={healthSection} />
+        <FiveCardsSection data={sportsSection} />
+        <ThreeColSection
+          data={[scienceSection, technologySection, sportsSection]}
+        />
       </section>
+
       <Footer />
     </>
   );
-};
-
-export default HomaPage;
+}
