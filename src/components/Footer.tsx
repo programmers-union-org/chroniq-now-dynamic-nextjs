@@ -2,234 +2,81 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#252525] text-white">
-      {/* top categories */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-2 gap-x-4 gap-y-14 lg:grid-cols-4">
+    <footer className="bg-[#1a1a1a] text-white text-sm">
+      {/* Top Section */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center sm:text-left">
+          {/* Categories */}
           <div>
-            <ul className="space-y-2 leading-snug">
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  ALLURE
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  AVIATION
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  BUSINESS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  COLUMNS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  CRIME ALERT
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  EDITORIAL
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  DISCUSSION
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  EDUCATION
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  E-EDITIONS
-                </Link>
-              </li>
+            <h3 className="text-base font-semibold mb-4">Top Categories</h3>
+            <ul className="space-y-2">
+              {[
+                { name: "Business", href: "/business" },
+                { name: "Politics", href: "/politics" },
+                { name: "Health", href: "/health" },
+                { name: "Sports", href: "/sports" },
+                { name: "Science", href: "/science" },
+                { name: "Technology", href: "/technology" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="hover:text-gray-300 transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* About */}
           <div>
-            <ul className="space-y-2 leading-snug">
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  ENTERTAINMENT
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  ENVIRONMENT
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  FEATURES
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  FOREIGN
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  HEALTH
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  HOMES &amp; PROPERTY
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  HUMAN ANGLE
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  INSURANCE AND YOU
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  PENSION
-                </Link>
-              </li>
-            </ul>
+            <h3 className="text-base font-semibold mb-4">About chroniqnow</h3>
+            <p className="text-gray-400 leading-relaxed text-sm">
+              chroniqnow delivers trusted journalism across business, politics,
+              science, health, and more. Our team is committed to bringing
+              credible, fact-based reporting to the global
+              audience.
+            </p>
           </div>
+
+          {/* Contact */}
+         <div>
+  <h3 className="text-base font-semibold mb-4">Contact</h3>
+  <p className="text-gray-400 text-sm space-y-1">
+    <span className="block">1234 Elm Street, Suite 567</span>
+    <span className="block">New York, NY 10001</span>
+    <span className="block">Phone: +1 (555) 123-4567</span>
+    <span className="block">Email: info@chroniqnow.com</span>
+  </p>
+</div>
+
+
+          {/* Office Hours */}
           <div>
-            <ul className="space-y-2 leading-snug">
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  INTERVIEWS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  LABOUR
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  LAW &amp; HUMAN RIGHTS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  METRO
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  MOTORING
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  POLITICS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  RELATIONSHIPS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  SPECIAL REPORT
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  SPORTS
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul className="space-y-2 leading-snug">
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  SWEET CRUDE
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  TECHNOLOGY
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  THE ARTS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  CARTOONS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  TRAVEL &amp; TOURISM
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  VIDEOS
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  VIEWPOINT
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  WOMAN’S OWN
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-xs hover:underline">
-                  WORSHIP
-                </Link>
-              </li>
-            </ul>
+            <h3 className="text-base font-semibold mb-4">Office Hours</h3>
+            <p className="text-gray-400 text-sm space-y-1">
+              <span className="block">Mon - Fri: 9:00 AM - 6:00 PM</span>
+              <span className="block">Saturday: 10:00 AM - 2:00 PM</span>
+              <span className="block">Sunday: Closed</span>
+            </p>
           </div>
         </div>
       </div>
 
-      {/* bottom bar */}
-      <div className="bg-[#333333] py-4">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-center text-xs">
-          <p>© 2025 Vanguard Media Limited, Nigeria</p>
-          <div className="hidden lg:flex flex-wrap items-center space-x-2">
-            <Link href="#" className="hover:underline">
-              Home
-            </Link>
-            <span>|</span>
-            <Link href="#" className="hover:underline">
-              About Us
-            </Link>
-            <span>|</span>
-            <Link href="#" className="hover:underline">
-              Advertise with us
-            </Link>
-            <span>|</span>
-            <Link href="#" className="hover:underline">
-              Contact Us
-            </Link>
-            <span>|</span>
-            <Link href="#" className="hover:underline">
-              Privacy Policy
-            </Link>
-          </div>
+      {/* Divider */}
+      <div className="border-t border-gray-700" />
+
+      {/* Bottom Section */}
+      <div className="container mx-auto px-4 py-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 text-xs text-gray-400 text-center sm:text-left">
+        <p>© 2025 chroniqnow Media Limited, Nigeria. All rights reserved.</p>
+        <div className="flex flex-wrap justify-center sm:justify-end gap-x-4 gap-y-2">
+          <span>Home</span>
+          <span>About Us</span>
+          <span>Advertise</span>
+          <span>Contact</span>
+          <span>Privacy Policy</span>
         </div>
       </div>
     </footer>

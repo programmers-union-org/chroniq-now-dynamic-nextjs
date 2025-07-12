@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LoadMoreArticles from "@/components/LoadMoreArticles";
 import type { Article } from "@/types/homepage";
+import type { Metadata } from "next";
 
 // interface CategoryData {
 //   category: string;
@@ -19,6 +20,89 @@ export async function generateStaticParams() {
   return files
     .filter((f) => f.endsWith(".json"))
     .map((f) => ({ category: f.replace(/\.json$/, "") }));
+   
+}
+ export async function generateMetadata({
+  params,
+}: {
+  params:Promise< { category: string }>;
+}): Promise<Metadata> {
+  const category = (await params).category;
+  const dataPath = path.join(process.cwd(), "src", "data", `${category}.json`);
+
+  let raw: string;
+  try {
+    raw = await fs.readFile(dataPath, "utf8");
+  } catch {
+    return {
+      title: "Chroniq Now",
+      description: "Chroniq Now - Global News Hub",
+      metadataBase: new URL("https://chroniqnow.com"),
+      robots: { index: true, follow: true }
+    };
+  }
+
+  let articles: Article[];
+  try {
+    articles = JSON.parse(raw) as Article[];
+  } catch {
+    articles = [];
+  }
+
+  // sort by date descending and pick the latest article
+  const sorted = articles.slice().sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+  const latest = sorted[0];
+
+  const ogImage =
+    latest?.image ||
+    "https://chroniqnow.com/images/chroniqnow-logo.webp";
+
+  const capitalized =
+    category.charAt(0).toUpperCase() + category.slice(1);
+
+  // SEO-optimized title (55–60 chars)
+  const title = `${capitalized} News - Chroniq Now: Global ${capitalized} Headlines`;
+  // SEO-optimized description (~140–150 chars)
+  const description = `Get the latest ${capitalized} news on Chroniq Now – your global source for politics, business, culture & more. Breaking updates, in-depth analysis & exclusive stories.`;
+
+  return {
+    title,
+    description,
+    metadataBase: new URL("https://chroniqnow.com"),
+    alternates: {
+      canonical: `https://chroniqnow.com/${category}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://chroniqnow.com/${category}`,
+      siteName: "Chroniq Now",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${capitalized} news – Chroniq Now`,
+        },
+      ],
+      type: "website",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: "@ChroniqNow",
+      images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    },
+  };
 }
 
 export default async function CategoryPage({
@@ -53,8 +137,44 @@ export default async function CategoryPage({
   const otherPageArticles = pageArticles.slice(1);
   const bottomArticles = pageArticles.slice(7);
 
+  // 1) compute capitalized
+  const capitalized = category.charAt(0).toUpperCase() + category.slice(1);
+
+
+  const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "headline": `${capitalized} News - Chroniq Now`,
+  "url": `https://chroniqnow.com/${category}`,
+  "keywords": [
+    `${capitalized.toLowerCase()} news`,
+    `latest ${capitalized.toLowerCase()} updates`,
+    "global news",
+    "news portal"
+  ],
+  "isPartOf": {
+    "@type": ["CreativeWork", "Product"],
+    "name": "Chroniq Now - Global News Hub",
+    "productID": "chroniqnow.com:standard"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Chroniq Now",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chroniqnow.com/images/chroniqnow-logo.webp"
+    }
+  }
+};
+
   return (
     <>
+    <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
       <Navbar />
 
       <main className="container mx-auto p-2 sm:p-0 py-8">

@@ -43,8 +43,8 @@ export default function Navbar() {
         <div className="md:text-sm text-gray-800 font-medium ">
           {dateString}
         </div>
-        <Link className="curosr-pointer" href={"/"}>
-          <div className="text-5xl font-bold text-red-600">Vanguard</div>
+        <Link className="cursor-pointer" href={"/"}>
+          <div className="text-5xl font-bold text-red-600 uppercase">chroniq now</div>
         </Link>
         <div className="relative w-64">
           <input
@@ -59,9 +59,9 @@ export default function Navbar() {
       </div>
 
       {/* mobile top row */}
-      <div className="flex md:hidden items-center justify-between px-4 py-2 ">
-        <Link className="curosr-pointer" href={"/"}>
-          <div className="text-3xl font-bold text-red-600">Vanguard</div>
+      <div className="flex md:hidden items-center justify-between px-2 py-2 ">
+        <Link className="cursor-pointer" href={"/"}>
+          <div className="text-2xl font-bold text-red-600 uppercase">chroniq now</div>
         </Link>
         <div className="flex items-center space-x-2">
           <div className="relative w-32">
@@ -148,9 +148,9 @@ export default function Navbar() {
 
       {/* mobile scrollable nav */}
       <div className="md:hidden scrollbar-hide overflow-x-auto border-t border-red-100">
-        <ul className="flex p-1 space-x-6  font-medium text-gray-900">
+        <ul className="flex text-xs p-1 pl-2 space-x-6  font-medium text-gray-900">
           {navItems.map((item, i) => (
-            <li key={i} className="relative">
+            <li key={i} className="relative pr-1">
               {item === "home" ? (
                 <Link href={"/"} className="flex items-center">
                   {item.toUpperCase()}

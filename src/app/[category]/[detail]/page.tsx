@@ -8,6 +8,7 @@ import {
   getLatestArticles,
   getArticlesByCategory,
 } from "@/lib/readAlljsonfiles";
+import { Metadata } from "next";
 
 interface DetailPageProps {
   params: Promise<{
@@ -15,6 +16,65 @@ interface DetailPageProps {
     detail: string;
   }>;
 }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise <{ category: string; detail: string }>;
+}): Promise<Metadata> {
+  const { category, detail: slug } =await params;
+  const article = getArticleBySlug(slug);
+
+  if (!article) {
+    return {
+      title: "Chroniq Now",
+      description: "Chroniq Now - Global News Hub",
+      metadataBase: new URL("https://chroniqnow.com"),
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const url = `https://chroniqnow.com/${category}/${slug}`;
+  const title = `${article.title} | Chroniq Now`;
+  const description = article.shortdescription;
+  const image = article.image;
+
+  return {
+    title,
+    description,
+    metadataBase: new URL("https://chroniqnow.com"),
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Chroniq Now",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+      type: "article",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: "@ChroniqNow",
+      images: [image],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const articles = [
     ...getArticlesByCategory("business"),
@@ -61,13 +121,13 @@ export default async function DetailPage({ params }: DetailPageProps) {
       <Navbar />
 
       <main className="container mx-auto p-2 sm:p-0  py-8">
-        <div className="flex flex-col mb-8">
+        <div className="flex flex-col mb-8 gap-2 sm:pt-3">
           <nav className="text-sm font-bold text-gray-500 mb-4 lg:mb-0 lg:mr-4">
-            <Link href="/" className="hover:underline">
+            <Link href="/" className="hover:text-red-600">
               HOME
             </Link>
             <span className="mx-1">»</span>
-            <Link href={`/${category}`} className="hover:underline">
+            <Link href={`/${category}`} className="hover:text-red-600">
               {category.toUpperCase()}
             </Link>
             <span className="mx-1">»</span>
@@ -75,9 +135,9 @@ export default async function DetailPage({ params }: DetailPageProps) {
           </nav>
 
           <div className="flex space-x-4 items-center">
-            <span className="text-red-600 uppercase text-sm font-semibold">
-              {category}
-            </span>
+           <Link href={`/${category}`} className="text-red-600 font-bold">
+              {category.toUpperCase()}
+            </Link>
             <span className="text-teal-600 text-sm">{article.date}</span>
           </div>
         </div>
@@ -115,7 +175,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
           )}
 
           {/* latest News */}
-          <aside className="w-full lg:w-1/3 sticky top-50 self-start">
+          <aside className="w-full lg:w-1/3 sticky top-55 self-start">
             <h2 className="text-xl font-semibold mb-4 border-b pb-2">
               Latest News
             </h2>
@@ -152,7 +212,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
         </div>
 
         {/* more in this category */}
-        <section className="mt-12 w-full">
+        <section className="mt-12 w-full pb-3">
           <h2 className="text-2xl font-semibold mb-6">
             More in {category.charAt(0).toUpperCase() + category.slice(1)}
           </h2>
@@ -163,7 +223,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
                   href={`/${category}/${item.slug}`}
                   className="block shadow-sm hover:bg-gray-50 overflow-hidden h-full transition"
                 >
-                  <div className="w-full h-40 sm:h-70 overflow-hidden">
+                  <div className="w-full h-60 sm:h-70 overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.title}

@@ -47,7 +47,7 @@
 }
 ,
       {
-  "category": "world",
+  "category": "health",
   "title": "Anthrax Outbreak Sparks Mystery in Africa as Health Officials Race to Trace Origins",
   "shortdescription": "A sudden outbreak of anthrax in parts of East and Central Africa has left health officials scrambling to contain the disease and uncover its origins. The unusual spread pattern, involving both human and livestock infections, has raised fears of environmental triggers, poor surveillance, and even potential biosecurity breaches.",
   "slug": "mystery-anthrax-outbreak-africa",
@@ -107,7 +107,7 @@
 }
 ,
       {
-  "category": "world",
+  "category": "health",
   "title": "C.D.C. and W.H.O. Offers of Covid Support Ignored by China Amid Surge",
   "shortdescription": "Despite escalating Covid-19 cases and overwhelmed hospitals, Chinese authorities have remained silent on repeated offers of aid from the U.S. Centers for Disease Control and Prevention and the World Health Organization. The lack of cooperation raises global health concerns.",
   "slug": "cdc-who-covid-support-offers-ignored-china",
@@ -156,7 +156,7 @@
 }
 ,
        {
-  "category": "world",
+  "category": "health",
   "title": "China Confirms Discovery of Novel Coronavirus Behind Mysterious Pneumonia Cases",
   "shortdescription": "Chinese health authorities have identified a new coronavirus as the source of a cluster of pneumonia-like illnesses in Wuhan. The announcement marks a critical moment in tracing the origins of what could become a global health concern.",
    "date":"9/07/2025",
