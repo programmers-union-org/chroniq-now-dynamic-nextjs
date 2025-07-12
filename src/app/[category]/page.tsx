@@ -57,7 +57,7 @@ export default async function CategoryPage({
     <>
       <Navbar />
 
-      <main className="container mx-auto py-8">
+      <main className="container mx-auto p-2 sm:p-0 py-8">
         {/* breadcrumb + title */}
         <nav aria-label="Breadcrumb" className="mb-2 text-sm">
           <ol className="flex items-center">
@@ -229,7 +229,7 @@ export default async function CategoryPage({
                 className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-center justify-between h-40">
-                  <h3 className="text-base font-bold text-gray-900 line-clamp-2 p-2 mt-0 leading-snug tracking-tight">
+                  <h3 className="text-base font-bold text-gray-900 line-clamp-3 p-2 mt-0 leading-snug tracking-tight">
                     {item.title}
                   </h3>
                   <div className="w-30 h-full flex-shrink-0 overflow-hidden">

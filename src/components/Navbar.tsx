@@ -150,13 +150,16 @@ export default function Navbar() {
       <div className="md:hidden scrollbar-hide overflow-x-auto border-t border-red-100">
         <ul className="flex p-1 space-x-6  font-medium text-gray-900">
           {navItems.map((item, i) => (
-            <li key={i} className="flex-shrink-0 ">
-              <Link
-                href={`/${item.toLowerCase()}`}
-                className="flex items-center whitespace-nowrap text-xs"
-              >
-                {item.toLocaleUpperCase()}
-              </Link>
+            <li key={i} className="relative">
+              {item === "home" ? (
+                <Link href={"/"} className="flex items-center">
+                  {item.toUpperCase()}
+                </Link>
+              ) : (
+                <Link href={`/${item.toLowerCase()}`} className="flex items-center">
+                  {item.toUpperCase()}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

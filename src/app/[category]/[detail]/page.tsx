@@ -10,14 +10,31 @@ import {
 } from "@/lib/readAlljsonfiles";
 
 interface DetailPageProps {
-  params: {
+  params: Promise<{
     category: string;
     detail: string;
-  };
+  }>;
+}
+export async function generateStaticParams() {
+  const articles = [
+    ...getArticlesByCategory("business"),
+    ...getArticlesByCategory("health"),
+    ...getArticlesByCategory("politics"),
+
+    ...getArticlesByCategory("science"),
+
+    ...getArticlesByCategory("sports"),
+    ...getArticlesByCategory("technology"),
+  ];
+
+  return articles.map((article) => ({
+    category: article.category,
+    detail: article.slug,
+  }));
 }
 
 export default async function DetailPage({ params }: DetailPageProps) {
-  const { category, detail: slug } = params;
+  const { category, detail: slug } = await params;
 
   const article = getArticleBySlug(slug);
   const latestArticles = getLatestArticles(10);
@@ -43,7 +60,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
     <>
       <Navbar />
 
-      <main className="container mx-auto  py-8">
+      <main className="container mx-auto p-2 sm:p-0  py-8">
         <div className="flex flex-col mb-8">
           <nav className="text-sm font-bold text-gray-500 mb-4 lg:mb-0 lg:mr-4">
             <Link href="/" className="hover:underline">
