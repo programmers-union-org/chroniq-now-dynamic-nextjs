@@ -2,17 +2,95 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ClientDetail from "@/components/ClientDetail";
 import {
   getArticleBySlug,
   getLatestArticles,
   getArticlesByCategory,
 } from "@/lib/readAlljsonfiles";
+import { Metadata } from "next";
 
 interface DetailPageProps {
   params: Promise<{
     category: string;
     detail: string;
   }>;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise <{ category: string; detail: string }>;
+}): Promise<Metadata> {
+  const { category, detail: slug } =await params;
+  const article = getArticleBySlug(slug);
+
+  if (!article) {
+    return {
+      title: "Chroniq Now",
+      description: "Chroniq Now - Global News Hub",
+      metadataBase: new URL("https://chroniqnow.com"),
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const url = `https://chroniqnow.com/${category}/${slug}`;
+  const title = `${article.title} | Chroniq Now`;
+  const description = article.shortdescription;
+  const image = article.image;
+
+  return {
+    title,
+    description,
+    metadataBase: new URL("https://chroniqnow.com"),
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Chroniq Now",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+      type: "article",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: "@ChroniqNow",
+      images: [image],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const articles = [
+    ...getArticlesByCategory("business"),
+    ...getArticlesByCategory("health"),
+    ...getArticlesByCategory("politics"),
+
+    ...getArticlesByCategory("science"),
+
+    ...getArticlesByCategory("sports"),
+    ...getArticlesByCategory("technology"),
+  ];
+
+  return articles.map((article) => ({
+    category: article.category,
+    detail: article.slug,
+  }));
 }
 
 export default async function DetailPage({ params }: DetailPageProps) {
@@ -34,18 +112,22 @@ export default async function DetailPage({ params }: DetailPageProps) {
     );
   }
 
+  const isClientSlug =
+    category === "politics" &&
+    slug === "bribery-case-collapses-into-minor-campaign-finance-violation";
+
   return (
     <>
       <Navbar />
 
-      <main className="container mx-auto px-4 py-8">
-        <div className="flex flex-col mb-8">
-          <nav className="text-sm font-bold  text-gray-500 mb-4 lg:mb-0 lg:mr-4">
-            <Link href="/" className="hover:underline">
+      <main className="container mx-auto p-2 sm:p-0  py-8">
+        <div className="flex flex-col mb-8 gap-2 sm:pt-3">
+          <nav className="text-sm font-bold text-gray-500 mb-4 lg:mb-0 lg:mr-4">
+            <Link href="/" className="hover:text-red-600">
               HOME
             </Link>
             <span className="mx-1">»</span>
-            <Link href={`/${category}`} className="hover:underline">
+            <Link href={`/${category}`} className="hover:text-red-600">
               {category.toUpperCase()}
             </Link>
             <span className="mx-1">»</span>
@@ -53,40 +135,47 @@ export default async function DetailPage({ params }: DetailPageProps) {
           </nav>
 
           <div className="flex space-x-4 items-center">
-            <span className="text-red-600 uppercase text-sm font-semibold">
-              {category}
-            </span>
+           <Link href={`/${category}`} className="text-red-600 font-bold">
+              {category.toUpperCase()}
+            </Link>
             <span className="text-teal-600 text-sm">{article.date}</span>
           </div>
         </div>
 
         <div className="flex flex-col lg:flex-row w-full">
           {/* article */}
-          <article className="w-full lg:w-2/3 lg:pr-8 mb-12 lg:mb-0">
-            <h1 className="text-4xl font-bold mb-6">{article.title}</h1>
+          {isClientSlug ? (
+            <ClientDetail />
+          ) : (
+            <article className="w-full lg:w-2/3 lg:pr-8 mb-12 lg:mb-0">
+              <h1 className=" text-3xl sm:text-4xl font-bold mb-6">
+                {article.title}
+              </h1>
 
-            <div className="relative w-full h-[400px] mb-6">
-              <Image
-                src={article.image}
-                alt={article.title}
-                fill
-                className="object-cover rounded"
-              />
-            </div>
+              <div className="w-full mb-6 overflow-hidden shadow-md">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  width={1200}
+                  height={600}
+                  className="w-full h-full object-cover "
+                />
+              </div>
 
-            <p className="text-lg leading-relaxed mb-6 font-bold">
-              {article.shortdescription}
-            </p>
-
-            {article.description && (
-              <p className="text-base leading-relaxed mb-4">
-                {article.description}
+              <p className="text-lg leading-relaxed mb-6 font-bold">
+                {article.shortdescription}
               </p>
-            )}
-          </article>
+
+              {article.description && (
+                <p className="text-base leading-relaxed mb-4">
+                  {article.description}
+                </p>
+              )}
+            </article>
+          )}
 
           {/* latest News */}
-          <aside className="w-full lg:w-1/3 sticky top-50 self-start">
+          <aside className="w-full lg:w-1/3 sticky top-55 self-start">
             <h2 className="text-xl font-semibold mb-4 border-b pb-2">
               Latest News
             </h2>
@@ -97,18 +186,22 @@ export default async function DetailPage({ params }: DetailPageProps) {
                     href={`/${item.category}/${item.slug}`}
                     className="flex items-center shadow-sm hover:bg-gray-50 transition"
                   >
-                    <div className="relative w-20 h-20 flex-shrink-0 mr-3">
+                    <div className="w-30 h-20  flex-shrink-0 mr-3 overflow-hidden ">
                       <Image
                         src={item.image}
                         alt={item.title}
-                        fill
-                        className="object-cover"
+                        width={80}
+                        height={80}
+                        className="object-cover w-full h-full"
                       />
                     </div>
+
                     <div className="flex flex-col">
-                      <span className="text-sm font-bold leading-snug tracking-tight">{item.title}</span>
+                      <span className="text-sm font-bold leading-snug tracking-tight">
+                        {item.title}
+                      </span>
                       <span className="text-xs text-gray-500 mt-1">
-                        {article.date}
+                        {item.date}
                       </span>
                     </div>
                   </Link>
@@ -119,28 +212,32 @@ export default async function DetailPage({ params }: DetailPageProps) {
         </div>
 
         {/* more in this category */}
-        <section className="mt-12 w-full">
+        <section className="mt-12 w-full pb-3">
           <h2 className="text-2xl font-semibold mb-6">
             More in {category.charAt(0).toUpperCase() + category.slice(1)}
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {moreArticles.map((item, index) => (
-              <li key={item.slug + index}>
+              <li key={`${item.slug}-${index}`}>
                 <Link
                   href={`/${category}/${item.slug}`}
                   className="block shadow-sm hover:bg-gray-50 overflow-hidden h-full transition"
                 >
-                  <div className="relative w-full h-40">
+                  <div className="w-full h-60 sm:h-70 overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.title}
-                      fill
-                      className="object-cover"
+                      width={800}
+                      height={320}
+                      className="object-cover w-full h-full"
                     />
                   </div>
+
                   <div className="p-4">
-                    <h3 className="text-lg font-bold leading-snug tracking-tight mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-500">{article.date}</p>
+                    <h3 className="text-lg font-bold leading-snug tracking-tight mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-500">{item.date}</p>
                   </div>
                 </Link>
               </li>

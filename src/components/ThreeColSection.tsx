@@ -33,19 +33,21 @@ export default function ThreeColSection({ data }: ThreeColSectionProps) {
                     className="
                       flex items-center
                       h-28 lg:h-34
-                      bg-white border border-gray-200 shadow-xs rounded-xs overflow-hidden
+                      bg-white border border-gray-200 shadow-xs  overflow-hidden
                       flex-row lg:flex-row-reverse
                     "
                   >
                     {/* image then title */}
-                    <div className="relative w-32 h-full flex-shrink-0">
+                    <div className="w-32 aspect-[3/4] flex-shrink-0 overflow-hidden">
                       <Image
                         src={article.image}
                         alt={article.title}
-                        fill
-                        className="object-cover"
+                        width={300}
+                        height={400}
+                        className="w-full h-full object-cover"
                       />
                     </div>
+
                     <div className="flex-1 px-4">
                       <h3 className="text-base font-bold line-clamp-3 leading-snug tracking-tight">
                         {article.title}
