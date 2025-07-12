@@ -31,19 +31,21 @@ export default function HomeSections({ data }: { data: CategoryData }) {
       {/* grid: mobile 1-col, desktop 2-col */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
         {/* left: latest */}
-        <div className="flex flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition rounded-sm">
+        <div className="flex flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition ">
           <Link
             href={`/${category.toLowerCase()}/${main.slug}`}
             className="flex flex-col h-full"
           >
-            <div className="relative w-full h-[250px] sm:h-[450px]">
+            <div className="w-full aspect-[16/9] overflow-hidden">
               <Image
                 src={main.image}
                 alt={main.title}
-                fill
-                className="object-cover"
+                width={1920}
+                height={1080}
+                className="w-full h-full object-cover"
               />
             </div>
+
             <div className="p-4 flex flex-col flex-1">
               <h3 className="mt-2 text-xl sm:text-2xl leading-snug tracking-tight font-bold hover:text-red-600">
                 {main.title}
@@ -61,16 +63,18 @@ export default function HomeSections({ data }: { data: CategoryData }) {
             <Link
               key={item.slug + index}
               href={`/${category.toLowerCase()}/${item.slug}`}
-              className="flex flex-row sm:flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition rounded-sm"
+              className="flex flex-row sm:flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition"
             >
-              <div className="relative w-24 h-auto aspect-square sm:w-full sm:h-[210px] flex-shrink-0 ">
+              <div className="w-24 aspect-square sm:w-full sm:aspect-[4/3] flex-shrink-0 overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.title}
-                  fill
-                  className="object-cover"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover"
                 />
               </div>
+
               <div className="p-3 flex-1 flex flex-col justify-center">
                 <h4 className="text-sm sm:text-xl font-semibold leading-snug tracking-tight hover:text-red-600">
                   {item.title}

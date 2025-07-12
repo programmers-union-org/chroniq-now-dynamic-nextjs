@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 export default async function CategoryPage({
   params,
 }: {
-  params:Promise< { category: string }>;
+  params: Promise<{ category: string }>;
 }) {
   const category = (await params).category;
   const dataPath = path.join(process.cwd(), "src", "data", `${category}.json`);
@@ -57,7 +57,7 @@ export default async function CategoryPage({
     <>
       <Navbar />
 
-      <main className="container mx-auto py-8 px-2">
+      <main className="container mx-auto py-8">
         {/* breadcrumb + title */}
         <nav aria-label="Breadcrumb" className="mb-2 text-sm">
           <ol className="flex items-center">
@@ -86,14 +86,16 @@ export default async function CategoryPage({
             href={`/${category}/${featuredArticle.slug}`}
             className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
           >
-            <div className="relative w-full h-64">
+            <div className="w-full h-64 overflow-hidden">
               <Image
                 src={featuredArticle.image}
                 alt={featuredArticle.title}
-                fill
-                className="object-cover"
+                width={1200}
+                height={400}
+                className="w-full h-full object-cover"
               />
             </div>
+
             <div className="p-2">
               <h2 className="text-xl font-bold">{featuredArticle.title}</h2>
               <p className="mt-2 text-sm text-gray-800">
@@ -112,14 +114,16 @@ export default async function CategoryPage({
                 href={`/${category}/${item.slug}`}
                 className="flex items-center overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
-                <div className="relative w-24 h-24 flex-shrink-0">
+                <div className="w-24 h-24 flex-shrink-0 overflow-hidden ">
                   <Image
                     src={item.image}
                     alt={item.title}
-                    fill
-                    className="object-cover"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover"
                   />
                 </div>
+
                 <div className="flex-1 ml-4">
                   <h3 className="text-base font-bold text-gray-900 line-clamp-2">
                     {item.title}
@@ -142,14 +146,16 @@ export default async function CategoryPage({
               href={`/${category}/${otherPageArticles[0].slug}`}
               className="flex flex-col overflow-hidden shadow-xs hover:shadow-lg transition-shadow"
             >
-              <div className="relative w-24 h-20 lg:w-full lg:h-full">
+              <div className="w-24 h-20 lg:w-full lg:h-full overflow-hidden ">
                 <Image
                   src={otherPageArticles[0].image}
                   alt={otherPageArticles[0].title}
-                  fill
-                  className="object-cover"
+                  width={96}
+                  height={80}
+                  className="object-cover w-full h-full"
                 />
               </div>
+
               <div className="p-3">
                 <h2 className="text-sm lg:text-base font-bold leading-snug tracking-tight">
                   {otherPageArticles[0].title}
@@ -165,14 +171,16 @@ export default async function CategoryPage({
               href={`/${category}/${featuredArticle.slug}`}
               className="flex flex-col row-span-2 col-span-2 overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
             >
-              <div className="relative w-full h-4/5">
+              <div className="w-full  overflow-hidden ">
                 <Image
                   src={featuredArticle.image}
                   alt={featuredArticle.title}
-                  fill
-                  className="object-cover"
+                  width={1200}
+                  height={960}
+                  className="w-full h-full object-cover"
                 />
               </div>
+
               <div className="p-4 sm:p-6 flex-1 flex flex-col justify-start gap-4">
                 <h2 className="text-xl sm:text-3xl font-bold leading-snug tracking-tight">
                   {featuredArticle.title}
@@ -191,14 +199,16 @@ export default async function CategoryPage({
               href={`/${category}/${otherPageArticles[1].slug}`}
               className="flex flex-col overflow-hidden shadow-xs hover:shadow-lg transition-shadow"
             >
-              <div className="relative w-24 h-20 lg:w-full lg:h-full">
+              <div className="w-24 h-20 lg:w-full lg:h-full overflow-hidden ">
                 <Image
                   src={otherPageArticles[1].image}
                   alt={otherPageArticles[1].title}
-                  fill
-                  className="object-cover"
+                  width={96}
+                  height={80}
+                  className="w-full h-full object-cover"
                 />
               </div>
+
               <div className="p-3">
                 <h2 className="text-sm lg:text-base font-bold leading-snug tracking-tight">
                   {otherPageArticles[1].title}
@@ -218,16 +228,17 @@ export default async function CategoryPage({
                 href={`/${category}/${item.slug}`}
                 className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
-                <div className="flex items-center justify-between h-[120px]">
+                <div className="flex items-center justify-between h-40">
                   <h3 className="text-base font-bold text-gray-900 line-clamp-2 p-2 mt-0 leading-snug tracking-tight">
                     {item.title}
                   </h3>
-                  <div className="relative w-35 h-full flex-shrink-0">
+                  <div className="w-30 h-full flex-shrink-0 overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.title}
-                      fill
-                      className="object-cover"
+                      width={140}
+                      height={160}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>

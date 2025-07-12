@@ -31,14 +31,16 @@ export default function HomeSection1({
             className="lg:col-span-1 order-2 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-row lg:flex-col">
-              <div className="relative w-24 h-20 lg:w-full lg:h-45 flex-shrink-0">
+              <div className="w-24 h-20 lg:w-full lg:h-45 flex-shrink-0 overflow-hidden ">
                 <Image
                   src={small1.image}
                   alt={small1.title}
-                  fill
-                  className="object-cover"
+                  width={96}
+                  height={80}
+                  className="w-full h-full object-cover"
                 />
               </div>
+
               <div className="p-3 flex items-center lg:items-start">
                 <h2 className="text-sm lg:text-base  tracking-tight font-semibold leading-snug">
                   {small1.title}
@@ -51,14 +53,18 @@ export default function HomeSection1({
             href={`/${category}/${featured.slug}`}
             className="lg:col-span-2 lg:row-span-2 order-1 lg:order-none flex flex-col overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
-            <div className="relative w-full aspect-[3/2]">
+            <div className="w-full aspect-[3/2] overflow-hidden">
               <Image
                 src={featured.image}
                 alt={featured.title}
-                fill
-                className="object-cover"
+                className="w-full h-full object-cover"
+                sizes="100vw"
+                fill={false}
+                width={0}
+                height={0}
               />
             </div>
+
             <div className="p-4 sm:p-6 flex-1 flex flex-col justify-start gap-4">
               <h2 className="text-xl sm:text-3xl font-bold leading-snug tracking-tight">
                 {featured.title}
@@ -74,22 +80,21 @@ export default function HomeSection1({
             className="lg:col-span-1 order-3 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-row lg:flex-col">
-              <div className="relative w-24 h-20 lg:w-full lg:h-45 flex-shrink-0">
+              <div className="w-24 h-20 lg:w-full lg:h-45 flex-shrink-0 overflow-hidden">
                 <Image
                   src={small2.image}
                   alt={small2.title}
-                  fill
-                  className="object-cover"
+                  width={96}
+                  height={80}
+                  className="w-full h-full object-cover"
                 />
               </div>
-              
+
               <div className="p-3 flex items-center lg:items-start">
-             
                 <h2 className="text-sm lg:text-base font-semibold leading-snug tracking-tight">
                   {small2.title}
                 </h2>
               </div>
-              
             </div>
           </Link>
         </div>
@@ -117,12 +122,13 @@ export default function HomeSection1({
                       {item.title}
                     </h4>
                   </div>
-                  <div className="relative w-24 flex-shrink-0">
+                  <div className="w-24 aspect-[4/3] flex-shrink-0 overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.title}
-                      fill
-                      className="object-cover"
+                      width={96}
+                      height={72}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </Link>

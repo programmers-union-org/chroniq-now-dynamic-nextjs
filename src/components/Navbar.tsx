@@ -20,6 +20,7 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
+    "home",
     "business",
     "health",
     "politics",
@@ -38,7 +39,7 @@ export default function Navbar() {
   return (
     <header className="border-b border-red-100 sticky top-0 z-50 bg-white">
       {/* desktop top bar */}
-      <div className="hidden md:flex items-center justify-between p-8 px-22 ">
+      <div className="hidden md:flex items-center justify-between p-8 px-20 ">
         <div className="md:text-sm text-gray-800 font-medium ">
           {dateString}
         </div>
@@ -100,16 +101,19 @@ export default function Navbar() {
       </div>
 
       {/* desktop nav */}
-      <div className="hidden md:flex items-center justify-between px-22 py-3 border-t border-red-100">
+      <div className="hidden md:flex items-center justify-between px-20 py-3 border-t border-red-100">
         <ul className="flex space-x-8 text-sm font-medium text-gray-900">
           {navItems.map((item, i) => (
             <li key={i} className="relative">
-              <Link
-                href={`/${item.toLowerCase()}`}
-                className="flex items-center"
-              >
-                {item.toUpperCase()}
-              </Link>
+              {item === "home" ? (
+                <Link href={"/"} className="flex items-center">
+                  {item.toUpperCase()}
+                </Link>
+              ) : (
+                <Link href={`/${item.toLowerCase()}`} className="flex items-center">
+                  {item.toUpperCase()}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -160,7 +164,7 @@ export default function Navbar() {
 
       {/* bottom links on toggle */}
       {menuOpen && (
-        <div className="border-t border-red-100 p-1 md:px-22 md:py-3 ">
+        <div className="border-t border-red-100 p-1 md:px-20 md:py-3 ">
           <ul className="flex flex-wrap gap-x-8 gap-y-3 text-xs md:text-sm font-medium text-gray-900">
             {bottomLinks.map((item, i) => (
               <li key={i}>

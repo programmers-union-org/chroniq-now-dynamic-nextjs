@@ -35,14 +35,15 @@ export default function HomeSections({ data }: HomeSectionsProps) {
           <Link
             key={article.slug + index}
             href={`/${category}/${article.slug}`}
-            className="flex items-start bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-lg transition-shadow sm:block"
+            className="flex items-start bg-white border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow sm:block"
           >
-            <div className="relative w-24 h-full flex-shrink-0 sm:w-full sm:h-40">
+            <div className="w-24 aspect-[3/4] sm:w-full sm:aspect-[5/3] flex-shrink-0 overflow-hidden">
               <Image
                 src={article.image}
                 alt={article.title}
-                fill
-                className="object-cover"
+                width={400}
+                height={300}
+                className="w-full h-full object-cover"
                 sizes="(max-width: 1024px) 100vw, 20vw"
               />
             </div>
