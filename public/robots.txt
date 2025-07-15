@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.chroniqnow.com
+Host: https://www.chroniqnow.com/
 
 # Sitemaps
 Sitemap: https://www.chroniqnow.com/sitemap.xml

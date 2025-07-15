@@ -60,17 +60,16 @@ export default function HomeSection1({
                 src={featured.image}
                 alt={featured.title}
                 className="w-full h-full object-cover"
-                sizes="100vw"
-                fill={false}
-                width={0}
-                height={0}
+                width={800}
+                height={500}
+               priority
               />
             </div>
 
             <div className="p-4 sm:p-6 flex-1 flex flex-col justify-start gap-4">
-              <h2 className="text-xl sm:text-3xl font-bold leading-snug tracking-tight">
+              <h1 className="text-xl sm:text-3xl font-bold leading-snug tracking-tight">
                 {featured.title}
-              </h2>
+              </h1>
               <p className="block text-sm leading-relaxed text-gray-800">
                 {featured.shortdescription}
               </p>

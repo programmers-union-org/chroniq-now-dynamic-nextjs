@@ -36,7 +36,7 @@ export async function generateMetadata({
     return {
       title: "Chroniq Now",
       description: "Chroniq Now - Global News Hub",
-      metadataBase: new URL("https://chroniqnow.com"),
+      metadataBase: new URL("https://www.chroniqnow.com"),
       robots: { index: true, follow: true },
     };
   }
@@ -55,7 +55,7 @@ export async function generateMetadata({
   const latest = sorted[0];
 
   const ogImage =
-    latest?.image || "https://chroniqnow.com/images/chroniqnow-logo.webp";
+    latest?.image || "https://www.chroniqnow.com/images/chroniqnow-logo.webp";
 
   const capitalized = category.charAt(0).toUpperCase() + category.slice(1);
 
@@ -67,14 +67,14 @@ export async function generateMetadata({
   return {
     title,
     description,
-    metadataBase: new URL("https://chroniqnow.com"),
+    metadataBase: new URL("https://www.chroniqnow.com"),
     alternates: {
-      canonical: `https://chroniqnow.com/${category}`,
+      canonical: `https://www.chroniqnow.com/${category}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://chroniqnow.com/${category}`,
+      url: `https://www.chroniqnow.com/${category}`,
       siteName: "Chroniq Now",
       images: [
         {
@@ -141,7 +141,7 @@ export default async function CategoryPage({
     "@context": "https://schema.org",
     "@type": "WebPage",
     headline: `${capitalized} News - Chroniq Now`,
-    url: `https://chroniqnow.com/${category}`,
+    url: `https://www.chroniqnow.com/${category}`,
     keywords: [
       `${capitalized.toLowerCase()} news`,
       `latest ${capitalized.toLowerCase()} updates`,
@@ -158,7 +158,7 @@ export default async function CategoryPage({
       name: "Chroniq Now",
       logo: {
         "@type": "ImageObject",
-        url: "https://chroniqnow.com/images/chroniqnow-logo.webp",
+        url: "https://www.chroniqnow.com/images/chroniqnow-logo.webp",
       },
     },
   };
@@ -210,6 +210,8 @@ export default async function CategoryPage({
                 width={1200}
                 height={400}
                 className="w-full h-full object-cover"
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
 
@@ -298,6 +300,8 @@ export default async function CategoryPage({
                   width={1200}
                   height={960}
                   className="w-full h-full object-cover"
+                  fetchPriority="high"
+                  loading="eager"
                 />
               </div>
 

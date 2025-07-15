@@ -93,6 +93,8 @@ export default async function ClientDetail() {
             width={1200}
             height={600}
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            loading="eager"
           />
         </div>
       </div>
