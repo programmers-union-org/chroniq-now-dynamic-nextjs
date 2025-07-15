@@ -56,7 +56,7 @@ export default function HomePage() {
         <HomeSections data={healthSection} />
         <FiveCardsSection data={sportsSection} />
         <ThreeColSection
-          data={[scienceSection, technologySection, sportsSection]}
+          data={[scienceSection, technologySection, businessSection]}
         />
       </section>
 

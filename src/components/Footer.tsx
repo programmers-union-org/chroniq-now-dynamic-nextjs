@@ -20,6 +20,7 @@ export default function Footer() {
               ].map((item) => (
                 <li key={item.name}>
                   <Link
+                    title={item.name}
                     href={item.href}
                     className="hover:text-gray-300 transition-colors"
                   >
@@ -32,26 +33,24 @@ export default function Footer() {
 
           {/* About */}
           <div>
-            <h3 className="text-base font-semibold mb-4">About chroniqnow</h3>
+            <h3 className="text-base font-semibold mb-4">About chroniq now</h3>
             <p className="text-gray-400 leading-relaxed text-sm">
-              chroniqnow delivers trusted journalism across business, politics,
+              chroniq now delivers trusted journalism across business, politics,
               science, health, and more. Our team is committed to bringing
-              credible, fact-based reporting to the global
-              audience.
+              credible, fact-based reporting to the global audience.
             </p>
           </div>
 
           {/* Contact */}
-         <div>
-  <h3 className="text-base font-semibold mb-4">Contact</h3>
-  <p className="text-gray-400 text-sm space-y-1">
-    <span className="block">1234 Elm Street, Suite 567</span>
-    <span className="block">New York, NY 10001</span>
-    <span className="block">Phone: +1 (555) 123-4567</span>
-    <span className="block">Email: info@chroniqnow.com</span>
-  </p>
-</div>
-
+          <div>
+            <h3 className="text-base font-semibold mb-4">Contact</h3>
+            <p className="text-gray-400 text-sm space-y-1">
+              <span className="block">1234 Elm Street, Suite 567</span>
+              <span className="block">New York, NY 10001</span>
+              <span className="block">Phone: +1 (555) 123-4567</span>
+              <span className="block">Email: info@chroniqnow.com</span>
+            </p>
+          </div>
 
           {/* Office Hours */}
           <div>

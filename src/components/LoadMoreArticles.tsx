@@ -26,6 +26,7 @@ export default function LoadMoreArticles({ articles, category }: Props) {
         {toShow.map((item) => (
           <Link
             key={item.id}
+            title={item.title}
             href={`/${category}/${item.slug}`}
             className="flex items-center overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
           >
@@ -54,6 +55,7 @@ export default function LoadMoreArticles({ articles, category }: Props) {
         {toShow.map((item) => (
           <Link
             key={item.id}
+            title={item.title}
             href={`/${category}/${item.slug}`}
             className="flex flex-col h-full overflow-hidden border border-gray-100 shadow-sm"
           >

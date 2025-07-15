@@ -15,7 +15,7 @@ export default function HomeSections({ data }: { data: CategoryData }) {
   return (
     <section className="border-t border-black py-5">
       {/* heading */}
-      <Link href={`/${category.toLowerCase()}`}>
+      <Link href={`/${category.toLowerCase()}`} title={`${category} news`}>
         <h2 className="text-2xl sm:text-3xl font-medium mb-6 uppercase text-red-600 flex items-center gap-1">
           {category}
           <svg
@@ -33,6 +33,7 @@ export default function HomeSections({ data }: { data: CategoryData }) {
         {/* left: latest */}
         <div className="flex flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition ">
           <Link
+            title={main.title}
             href={`/${category.toLowerCase()}/${main.slug}`}
             className="flex flex-col h-full"
           >
@@ -61,6 +62,7 @@ export default function HomeSections({ data }: { data: CategoryData }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
           {others.map((item, index) => (
             <Link
+              title={item.title}
               key={item.slug + index}
               href={`/${category.toLowerCase()}/${item.slug}`}
               className="flex flex-row sm:flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition"

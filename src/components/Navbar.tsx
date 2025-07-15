@@ -44,7 +44,7 @@ export default function Navbar() {
           {dateString}
         </div>
         <Link className="cursor-pointer" href={"/"}>
-          <div className="text-5xl font-bold text-red-600 uppercase">chroniq now</div>
+          <h1 className="text-5xl font-bold text-red-600 uppercase">chroniq now</h1>
         </Link>
         <div className="relative w-64">
           <input
@@ -61,7 +61,7 @@ export default function Navbar() {
       {/* mobile top row */}
       <div className="flex md:hidden items-center justify-between px-2 py-2 ">
         <Link className="cursor-pointer" href={"/"}>
-          <div className="text-2xl font-bold text-red-600 uppercase">chroniq now</div>
+          <h1 className="text-2xl font-bold text-red-600 uppercase">chroniq now</h1>
         </Link>
         <div className="flex items-center space-x-2">
           <div className="relative w-32">

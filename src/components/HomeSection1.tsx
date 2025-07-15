@@ -27,6 +27,7 @@ export default function HomeSection1({
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-y-5 lg:gap-x-5">
         <div className="order-first lg:order-none col-span-3 grid gap-6 grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 p-0 md:p-1">
           <Link
+            title={small1.title}
             href={`/${category}/${small1.slug}`}
             className="lg:col-span-1 order-2 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
@@ -50,6 +51,7 @@ export default function HomeSection1({
           </Link>
 
           <Link
+            title={featured.title}
             href={`/${category}/${featured.slug}`}
             className="lg:col-span-2 lg:row-span-2 order-1 lg:order-none flex flex-col overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
@@ -76,6 +78,7 @@ export default function HomeSection1({
           </Link>
 
           <Link
+            title={small2.title}
             href={`/${category}/${small2.slug}`}
             className="lg:col-span-1 order-3 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
@@ -109,6 +112,7 @@ export default function HomeSection1({
               <div className="absolute top-10 bottom-0 left-10 w-0.5 bg-red-500 z-0" />
               {latestArticles.slice(0, 10).map((item, index) => (
                 <Link
+                  title={item.title}
                   key={`${item.category}-${item.slug}-${index}`}
                   href={`/${item.category}/${item.slug}`}
                   className="relative z-10 flex bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden"
@@ -137,6 +141,7 @@ export default function HomeSection1({
           </div>
           <div className="px-6 pb-6 pt-4">
             <Link
+              title="More news"
               href="/business"
               className="block w-full text-center text-red-500 border border-red-500 py-2 font-semibold hover:bg-red-50 transition"
             >
