@@ -16,7 +16,7 @@ export default function ColumnsDesign({ data }: ColumnsProps) {
   return (
     <section className="border-t pt-4">
       <h2 className=" text-2xl sm:text-3xl uppercase text-red-600 mb-4 flex items-center">
-        <Link href={`/${category}`} className="mr-2">
+        <Link href={`/${category}`} title={`${category} news`} className="mr-2">
           {category.toUpperCase()}
         </Link>
         <svg
@@ -32,6 +32,7 @@ export default function ColumnsDesign({ data }: ColumnsProps) {
         <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory pb-4 scroll-container">
           {articles.map((item) => (
             <Link
+              title={item.title}
               key={item.slug}
               href={`/${category}/${item.slug}`}
               className="snap-start flex-shrink-0 w-80 h-auto border-2 border-[#ffe6e6] rounded-lg overflow-hidden flex"

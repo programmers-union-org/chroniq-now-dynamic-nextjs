@@ -17,7 +17,7 @@ export default function HomeSections({ data }: HomeSectionsProps) {
 
   return (
     <section className="border-t pt-6">
-      <Link href={`/${category}`}>
+      <Link href={`/${category}`} title={`${category} news`}>
         <h2 className="flex items-center text-2xl sm:text-3xl uppercase text-red-600 mb-4">
           {category.toUpperCase()}
           <svg
@@ -33,6 +33,7 @@ export default function HomeSections({ data }: HomeSectionsProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {displayArticles.map((article, index) => (
           <Link
+            title={article.title}
             key={article.slug + index}
             href={`/${category}/${article.slug}`}
             className="flex items-start bg-white border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow sm:block"

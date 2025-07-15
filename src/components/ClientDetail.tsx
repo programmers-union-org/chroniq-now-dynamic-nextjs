@@ -20,6 +20,20 @@ export default async function ClientDetail() {
   const slug = "bribery-case-collapses-into-minor-campaign-finance-violation";
   const article = (politics as Article[]).find((a) => a.slug === slug);
   if (!article) return <div>Article not found.</div>;
+  function highlightKeywords(text: string, keywords: string[]) {
+    const regex = new RegExp(`(${keywords.join("|")})`, "gi");
+    const parts = text.split(regex);
+
+    return parts.map((part, index) =>
+      keywords.some((kw) => kw.toLowerCase() === part.toLowerCase()) ? (
+        <strong key={index} className="font-semibold text-black">
+          {part}
+        </strong>
+      ) : (
+        <React.Fragment key={index}>{part}</React.Fragment>
+      )
+    );
+  }
 
   const sections: Section[] = [
     {
@@ -64,7 +78,7 @@ export default async function ClientDetail() {
     {
       title: " Court proceedings now are largely perfunctory",
       content:
-        "a virtual hearing is expected to formally enter the new information and dismiss the old indictment. Once that’s done, Wanda Vázquez Garced will officially have all major charges wiped clean. Political analysts in San Juan note that this outcome spares Puerto Rico the spectacle of another lengthy corruption trial and opens the door for Vázquez to potentially re-enter public life in some capacity, should she choose. Meanwhile, discussions in Washington and San Juan are likely to continue about what went wrong in this case. Was it federal overreach? Was it a good faith effort that uncovered only minor wrongdoing? Regardless, the final word on the Wanda Vázquez saga is now written: no bribery, no fraud – just a technical blip in campaign finance, resolved and put to rest.",
+        "A virtual hearing is expected to formally enter the new information and dismiss the old indictment. Once that’s done, Wanda Vázquez Garced will officially have all major charges wiped clean. Political analysts in San Juan note that this outcome spares Puerto Rico the spectacle of another lengthy corruption trial and opens the door for Vázquez to potentially re-enter public life in some capacity, should she choose. Meanwhile, discussions in Washington and San Juan are likely to continue about what went wrong in this case. Was it federal overreach? Was it a good faith effort that uncovered only minor wrongdoing? Regardless, the final word on the Wanda Vázquez saga is now written: no bribery, no fraud - just a technical blip in campaign finance, resolved and put to rest.",
     },
   ];
 
@@ -75,10 +89,12 @@ export default async function ClientDetail() {
         <div className="w-full overflow-hidden  shadow-lg">
           <Image
             src={article.image}
-            alt={article.title}
+            alt="Wanda Vázquez Garced speaks after bribery charges dropped"
             width={1200}
             height={600}
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            loading="eager"
           />
         </div>
       </div>
@@ -93,10 +109,17 @@ export default async function ClientDetail() {
       {/* Dateline + First Paragraph */}
       <div className="mb-6">
         <p className="text-base leading-relaxed">
-          <span className="font-semibold  text-gray-600 mr-1">
+          <span className="font-bold mr-1">
             {sections[0].title}:
           </span>
-          {sections[0].content}
+          {highlightKeywords(sections[0].content, [
+            "Julio Herrera Velutini",
+            "dismissed",
+            "Wanda Vázquez Garced",
+            "dropped its bribery",
+            "prosecution",
+            "technical campaign finance violation",
+          ])}
         </p>
       </div>
 
@@ -117,7 +140,40 @@ export default async function ClientDetail() {
             )}
             <section>
               <h2 className="text-2xl font-semibold mb-3">{sec.title}</h2>
-              <p className="text-base leading-relaxed">{sec.content}</p>
+              <p className="text-base leading-relaxed">
+                {highlightKeywords(sec.content, [
+                  "Julio Herrera Velutini",
+                  "abandoned the core charges",
+                  "information:",
+                  "information does not allege any bribery, fraud, or quid pro quo",
+                  "never actually materialized. No funds were ever received or used",
+                  "– have been dismissed with prejudice",
+                  "not face any trial for corruption.",
+                  "no actual transaction occurred,",
+                  "never delivered or coordinated",
+                  "There is no admission of guilt",
+                  "Defense attorneys argue",
+                  "no “smoking gun” evidence",
+                  "internal discussions at DOJ headquarters in Washington, D.C.",
+                  "face-saving measure",
+                  "no convictions or guilty pleas for any corruption. No admission of wrongdoing",
+                  "voids the serious charges",
+                  "Herrera Velutini does not admit to any bribery",
+                  "the core bribery narrative collapsed",
+                  "over-criminalized what is usually a civil or administrative issue",
+                  "wakeup call for the DOJ",
+                  "compliance issue",
+                  "proportionality",
+                  "no criminal record of corruption",
+                  "never took any illegal money nor traded favors",
+                  "“is not a reflection on my values or my service to the people of Puerto Rico.”",
+                  "“trial by fire”",
+                  "hard-won vindication",
+                  "all major charges wiped clean",
+                  "overreach",
+                  "no bribery, no fraud - just a technical blip in campaign finance, resolved and put to rest",
+                ])}
+              </p>
             </section>
           </React.Fragment>
         ))}
@@ -125,5 +181,3 @@ export default async function ClientDetail() {
     </article>
   );
 }
-
-// export default ClientDetail;

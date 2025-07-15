@@ -19,7 +19,7 @@ export default function ThreeColSection({ data }: ThreeColSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-6 sm:gap-y-0">
           {data.slice(0, 3).map((col) => (
             <div key={col.category} className="border-t  pt-6">
-              <Link href={`/${col.category.toLowerCase()}`}>
+              <Link href={`/${col.category.toLowerCase()}`} title={`${col.category} news`}>
                 <h2 className="text-2xl sm:text-3xl uppercase text-red-600 mb-6 text-center lg:text-left">
                   {col.category.toUpperCase()}
                 </h2>
@@ -60,6 +60,7 @@ export default function ThreeColSection({ data }: ThreeColSectionProps) {
               {/* mobile-only “More” button under each column */}
               <div className="mt-6 block lg:hidden">
                 <Link
+                  title={`More ${col.category.toUpperCase()} news`}
                   href={`/${col.category.toLowerCase()}`}
                   className="block w-full text-center py-2 border border-red-600 rounded uppercase text-red-600"
                 >
@@ -75,6 +76,7 @@ export default function ThreeColSection({ data }: ThreeColSectionProps) {
           {data.slice(0, 3).map((col) => (
             <Link
               key={col.category}
+              title={`More ${col.category.toUpperCase()} news`}
               href={`/${col.category.toLowerCase()}`}
               className="text-center py-2 border border-red-600 rounded uppercase text-red-600"
             >

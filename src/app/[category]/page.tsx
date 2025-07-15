@@ -20,12 +20,11 @@ export async function generateStaticParams() {
   return files
     .filter((f) => f.endsWith(".json"))
     .map((f) => ({ category: f.replace(/\.json$/, "") }));
-   
 }
- export async function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params:Promise< { category: string }>;
+  params: Promise<{ category: string }>;
 }): Promise<Metadata> {
   const category = (await params).category;
   const dataPath = path.join(process.cwd(), "src", "data", `${category}.json`);
@@ -37,8 +36,8 @@ export async function generateStaticParams() {
     return {
       title: "Chroniq Now",
       description: "Chroniq Now - Global News Hub",
-      metadataBase: new URL("https://chroniqnow.com"),
-      robots: { index: true, follow: true }
+      metadataBase: new URL("https://www.chroniqnow.com"),
+      robots: { index: true, follow: true },
     };
   }
 
@@ -56,11 +55,9 @@ export async function generateStaticParams() {
   const latest = sorted[0];
 
   const ogImage =
-    latest?.image ||
-    "https://chroniqnow.com/images/chroniqnow-logo.webp";
+    latest?.image || "https://www.chroniqnow.com/images/chroniqnow-logo.webp";
 
-  const capitalized =
-    category.charAt(0).toUpperCase() + category.slice(1);
+  const capitalized = category.charAt(0).toUpperCase() + category.slice(1);
 
   // SEO-optimized title (55–60 chars)
   const title = `${capitalized} News - Chroniq Now: Global ${capitalized} Headlines`;
@@ -70,14 +67,14 @@ export async function generateStaticParams() {
   return {
     title,
     description,
-    metadataBase: new URL("https://chroniqnow.com"),
+    metadataBase: new URL("https://www.chroniqnow.com"),
     alternates: {
-      canonical: `https://chroniqnow.com/${category}`,
+      canonical: `https://www.chroniqnow.com/${category}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://chroniqnow.com/${category}`,
+      url: `https://www.chroniqnow.com/${category}`,
       siteName: "Chroniq Now",
       images: [
         {
@@ -140,49 +137,48 @@ export default async function CategoryPage({
   // 1) compute capitalized
   const capitalized = category.charAt(0).toUpperCase() + category.slice(1);
 
-
   const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "headline": `${capitalized} News - Chroniq Now`,
-  "url": `https://chroniqnow.com/${category}`,
-  "keywords": [
-    `${capitalized.toLowerCase()} news`,
-    `latest ${capitalized.toLowerCase()} updates`,
-    "global news",
-    "news portal"
-  ],
-  "isPartOf": {
-    "@type": ["CreativeWork", "Product"],
-    "name": "Chroniq Now - Global News Hub",
-    "productID": "chroniqnow.com:standard"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Chroniq Now",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://chroniqnow.com/images/chroniqnow-logo.webp"
-    }
-  }
-};
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    headline: `${capitalized} News - Chroniq Now`,
+    url: `https://www.chroniqnow.com/${category}`,
+    keywords: [
+      `${capitalized.toLowerCase()} news`,
+      `latest ${capitalized.toLowerCase()} updates`,
+      "global news",
+      "news portal",
+    ],
+    isPartOf: {
+      "@type": ["CreativeWork", "Product"],
+      name: "Chroniq Now - Global News Hub",
+      productID: "chroniqnow.com:standard",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Chroniq Now",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.chroniqnow.com/images/chroniqnow-logo.webp",
+      },
+    },
+  };
 
   return (
     <>
-    <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <Navbar />
 
-      <main className="container mx-auto p-2 sm:p-0 py-8">
+      <main className=" p-2 sm:p-20 py-8">
         {/* breadcrumb + title */}
         <nav aria-label="Breadcrumb" className="mb-2 text-sm">
           <ol className="flex items-center">
             <li>
-              <Link href="/" className="text-red-600 uppercase">
+              <Link title="Home" href="/" className="text-red-600 uppercase">
                 HOME
               </Link>
             </li>
@@ -203,6 +199,7 @@ export default async function CategoryPage({
         {/* mobile layout */}
         <div className="block lg:hidden space-y-6">
           <Link
+            title={featuredArticle.title}
             href={`/${category}/${featuredArticle.slug}`}
             className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
           >
@@ -213,6 +210,8 @@ export default async function CategoryPage({
                 width={1200}
                 height={400}
                 className="w-full h-full object-cover"
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
 
@@ -231,6 +230,7 @@ export default async function CategoryPage({
             {otherPageArticles.map((item, i) => (
               <Link
                 key={item.slug + i}
+                title={item.title}
                 href={`/${category}/${item.slug}`}
                 className="flex items-center overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
@@ -263,6 +263,7 @@ export default async function CategoryPage({
           <div className="col-span-1 lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-6">
             {/* small card */}
             <Link
+              title={otherPageArticles[0].title}
               href={`/${category}/${otherPageArticles[0].slug}`}
               className="flex flex-col overflow-hidden shadow-xs hover:shadow-lg transition-shadow"
             >
@@ -288,6 +289,7 @@ export default async function CategoryPage({
 
             {/* featured */}
             <Link
+              title={featuredArticle.title}
               href={`/${category}/${featuredArticle.slug}`}
               className="flex flex-col row-span-2 col-span-2 overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
             >
@@ -298,6 +300,8 @@ export default async function CategoryPage({
                   width={1200}
                   height={960}
                   className="w-full h-full object-cover"
+                  fetchPriority="high"
+                  loading="eager"
                 />
               </div>
 
@@ -316,6 +320,7 @@ export default async function CategoryPage({
 
             {/* second small */}
             <Link
+              title={otherPageArticles[1].title}
               href={`/${category}/${otherPageArticles[1].slug}`}
               className="flex flex-col overflow-hidden shadow-xs hover:shadow-lg transition-shadow"
             >
@@ -345,6 +350,7 @@ export default async function CategoryPage({
             {otherPageArticles.slice(2, 6).map((item, i) => (
               <Link
                 key={item.slug + i}
+                title={item.title}
                 href={`/${category}/${item.slug}`}
                 className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
@@ -377,6 +383,7 @@ export default async function CategoryPage({
               {bottomArticles.map((item, i) => (
                 <Link
                   key={item.slug + i}
+                  title={item.title}
                   href={`/${category}/${item.slug}`}
                   className="flex flex-col h-full overflow-hidden border border-gray-100 shadow-sm"
                 >

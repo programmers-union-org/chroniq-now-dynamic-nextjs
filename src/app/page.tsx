@@ -4,23 +4,23 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Chroniq Now - Global News Hub: Breaking Headlines Worldwide Daily",
   description:
-    "ChroniqNow - your trusted source for breaking global news, in-depth analysis and up-to-the-minute coverage of politics, business, culture and more.",
-  authors: [{ name: "Chroniq Now Team", url: "https://chroniqnow.com" }],
+    "Chroniq Now - your trusted source for breaking global news, in-depth analysis and up-to-the-minute coverage of politics, business, culture and more.",
+  authors: [{ name: "Chroniq Now Team", url: "https://www.chroniqnow.com" }],
   publisher: "Chroniq Now",
-  metadataBase: new URL("https://chroniqnow.com"),
+  metadataBase: new URL("https://www.chroniqnow.com"),
   alternates: {
-    canonical: "https://chroniqnow.com/",
+    canonical: "https://www.chroniqnow.com/",
   },
 
   openGraph: {
     title: "Chroniq Now - Global News Hub: Breaking Headlines Worldwide Daily",
     description:
       "Chroniq Now - your trusted source for breaking global news, in-depth analysis and up-to-the-minute coverage of politics, business, culture and more.",
-    url: "https://chroniqnow.com/",
+    url: "https://www.chroniqnow.com/",
     siteName: "Chroniq Now",
     images: [
       {
-        url: "https://chroniqnow.com/images/ChroniqNow-logo.webp",
+        url: "https://www.chroniqnow.com/images/ChroniqNow-logo.webp",
         width: 1200,
         height: 630,
         alt: "Chroniq Now Logo",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description:
       "Chroniq Now - your trusted source for breaking global news, in-depth analysis and up-to-the-minute coverage of politics, business, culture and more.",
     creator: "@ChroniqNow",
-    images: ["https://chroniqnow.com/images/ChroniqNow-logo.webp"],
+    images: ["https://www.chroniqnow.com/images/ChroniqNow-logo.webp"],
   },
 
   robots: {
@@ -58,12 +58,12 @@ export default function Home() {
       {
         "@type": "WebSite",
         name: metadata.title,
-        url: metadata.metadataBase?.toString() ?? "https://chroniqnow.com/",
+        url: metadata.metadataBase?.toString() ?? "https://www.chroniqnow.com/",
         potentialAction: {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://chroniqnow.com/search?q={search_term_string}",
+            urlTemplate: "https://www.chroniqnow.com/search?q={search_term_string}",
           },
           "query-input": {
             "@type": "PropertyValueSpecification",
@@ -75,7 +75,7 @@ export default function Home() {
       {
         "@type": "WebPage",
         headline: "Home",
-        url: metadata.metadataBase?.toString() ?? "https://chroniqnow.com/",
+        url: metadata.metadataBase?.toString() ?? "https://www.chroniqnow.com/",
         keywords: [
           "chroniq now",
           "global news",
@@ -92,17 +92,17 @@ export default function Home() {
           name: metadata.publisher,
           logo: {
             "@type": "ImageObject",
-            url: "https://chroniqnow.com/images/chroniqnow-logo.webp",
+            url: "https://www.chroniqnow.com/images/chroniqnow-logo.webp",
           },
         },
       },
       {
         "@type": "Organization",
         name: metadata.publisher,
-        url: metadata.metadataBase?.toString() ?? "https://chroniqnow.com/",
+        url: metadata.metadataBase?.toString() ?? "https://www.chroniqnow.com/",
         logo: {
           "@type": "ImageObject",
-          url: "https://chroniqnow.com/images/chroniqnow-logo.webp",
+          url: "https://www.chroniqnow.com/images/chroniqnow-logo.webp",
         },
       },
     ],
