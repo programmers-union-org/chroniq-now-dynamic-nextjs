@@ -47,7 +47,7 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      <section className="p-5 sm:p-20 space-y-10">
+      <div className="p-5 sm:p-20 space-y-10">
         <HomeSection1
           categoryData={businessSection}
           latestArticles={latestArticles}
@@ -58,7 +58,7 @@ export default function HomePage() {
         <ThreeColSection
           data={[scienceSection, technologySection, businessSection]}
         />
-      </section>
+      </div>
 
       <Footer />
     </>

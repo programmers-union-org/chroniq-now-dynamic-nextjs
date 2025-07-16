@@ -28,7 +28,7 @@ export default function HomeSection1({
         <div className="order-first lg:order-none col-span-3 grid gap-6 grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 p-0 md:p-1">
           <Link
             title={small1.title}
-            href={`/${category}/${small1.slug}`}
+            href={`/${category}/${small1.slug}/`}
             className="lg:col-span-1 order-2 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-row lg:flex-col">
@@ -52,7 +52,7 @@ export default function HomeSection1({
 
           <Link
             title={featured.title}
-            href={`/${category}/${featured.slug}`}
+            href={`/${category}/${featured.slug}/`}
             className="lg:col-span-2 lg:row-span-2 order-1 lg:order-none flex flex-col overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="w-full aspect-[3/2] overflow-hidden">
@@ -62,7 +62,8 @@ export default function HomeSection1({
                 className="w-full h-full object-cover"
                 width={800}
                 height={500}
-               priority
+                fetchPriority="high"
+                loading="eager"
               />
             </div>
 
@@ -78,7 +79,7 @@ export default function HomeSection1({
 
           <Link
             title={small2.title}
-            href={`/${category}/${small2.slug}`}
+            href={`/${category}/${small2.slug}/`}
             className="lg:col-span-1 order-3 lg:order-none overflow-hidden shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-row lg:flex-col">
@@ -113,7 +114,7 @@ export default function HomeSection1({
                 <Link
                   title={item.title}
                   key={`${item.category}-${item.slug}-${index}`}
-                  href={`/${item.category}/${item.slug}`}
+                  href={`/${item.category}/${item.slug}/`}
                   className="relative z-10 flex bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden"
                 >
                   <div className="flex flex-col justify-start gap-2 p-4 w-full">
@@ -141,7 +142,7 @@ export default function HomeSection1({
           <div className="px-6 pb-6 pt-4">
             <Link
               title="More news"
-              href="/business"
+              href="/business/"
               className="block w-full text-center text-red-500 border border-red-500 py-2 font-semibold hover:bg-red-50 transition"
             >
               More news

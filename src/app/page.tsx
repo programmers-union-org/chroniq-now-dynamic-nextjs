@@ -63,7 +63,8 @@ export default function Home() {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://www.chroniqnow.com/search?q={search_term_string}",
+            urlTemplate:
+              "https://www.chroniqnow.com/search?q={search_term_string}",
           },
           "query-input": {
             "@type": "PropertyValueSpecification",

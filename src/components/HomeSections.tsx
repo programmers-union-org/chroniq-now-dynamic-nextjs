@@ -15,7 +15,7 @@ export default function HomeSections({ data }: { data: CategoryData }) {
   return (
     <section className="border-t border-black py-5">
       {/* heading */}
-      <Link href={`/${category.toLowerCase()}`} title={`${category} news`}>
+      <Link href={`/${category.toLowerCase()}/`} title={`${category} news`}>
         <h2 className="text-2xl sm:text-3xl font-medium mb-6 uppercase text-red-600 flex items-center gap-1">
           {category}
           <svg
@@ -34,7 +34,7 @@ export default function HomeSections({ data }: { data: CategoryData }) {
         <div className="flex flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition ">
           <Link
             title={main.title}
-            href={`/${category.toLowerCase()}/${main.slug}`}
+            href={`/${category.toLowerCase()}/${main.slug}/`}
             className="flex flex-col h-full"
           >
             <div className="w-full aspect-[16/9] overflow-hidden">
@@ -64,7 +64,7 @@ export default function HomeSections({ data }: { data: CategoryData }) {
             <Link
               title={item.title}
               key={item.slug + index}
-              href={`/${category.toLowerCase()}/${item.slug}`}
+              href={`/${category.toLowerCase()}/${item.slug}/`}
               className="flex flex-row sm:flex-col h-full overflow-hidden shadow-md hover:shadow-lg transition"
             >
               <div className="w-24 aspect-square sm:w-full sm:aspect-[4/3] flex-shrink-0 overflow-hidden">

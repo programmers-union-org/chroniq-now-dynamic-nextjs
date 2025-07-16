@@ -26,9 +26,12 @@ export default async function ClientDetail() {
 
     return parts.map((part, index) =>
       keywords.some((kw) => kw.toLowerCase() === part.toLowerCase()) ? (
-        <strong key={index} className="font-semibold text-black">
+        <span
+          key={index}
+          className="underline decoration-[#2077B6] underline-offset-4 text-[#2077B6] font-medium "
+        >
           {part}
-        </strong>
+        </span>
       ) : (
         <React.Fragment key={index}>{part}</React.Fragment>
       )
@@ -85,6 +88,7 @@ export default async function ClientDetail() {
   return (
     <article className="w-full lg:w-2/3 lg:pr-8 mb-12 lg:mb-0">
       <h1 className="text-3xl sm:text-4xl font-bold mb-6">{article.title}</h1>
+
       <div className="relative w-full h-auto mb-6  overflow-hidden shadow-lg">
         <div className="w-full overflow-hidden  shadow-lg">
           <Image
@@ -98,20 +102,10 @@ export default async function ClientDetail() {
           />
         </div>
       </div>
-      {/* <p className="text-lg leading-relaxed mb-6 font-bold">
-        {article.shortdescription}
-      </p>
-      {article.description && (
-        <p className="text-base leading-relaxed mb-8">
-          {article.description}
-        </p>
-      )} */}
-      {/* Dateline + First Paragraph */}
+
       <div className="mb-6">
         <p className="text-base leading-relaxed">
-          <span className="font-bold mr-1">
-            {sections[0].title}:
-          </span>
+          <span className="font-bold mr-1">{sections[0].title}:</span>
           {highlightKeywords(sections[0].content, [
             "Julio Herrera Velutini",
             "dismissed",
@@ -126,11 +120,10 @@ export default async function ClientDetail() {
       <div className="space-y-10">
         {sections.slice(1).map((sec, idx, arr) => (
           <React.Fragment key={idx + 1}>
-            {/* Insert image before the last section */}
             {idx === arr.length - 2 && (
               <div className="w-full mb-6 overflow-hidden shadow-md">
                 <Image
-                  src="/images/wanda-vazquez-garced-speaking.webp"
+                  src="/images/wanda-vazquez-press-conference.webp"
                   alt="Wanda Vázquez Garced Speaking"
                   width={1200}
                   height={600}
@@ -147,7 +140,7 @@ export default async function ClientDetail() {
                   "information:",
                   "information does not allege any bribery, fraud, or quid pro quo",
                   "never actually materialized. No funds were ever received or used",
-                  "– have been dismissed with prejudice",
+                  " have been dismissed with prejudice",
                   "not face any trial for corruption.",
                   "no actual transaction occurred,",
                   "never delivered or coordinated",
@@ -177,6 +170,11 @@ export default async function ClientDetail() {
             </section>
           </React.Fragment>
         ))}
+      </div>
+      <div className="flex items-center gap-2 mt-10 text-xs text-gray-500">
+        <span className="bg-gray-100 px-3 py-1 rounded-full">💬 12</span>
+        <span className="bg-gray-100 px-3 py-1 rounded-full">❤️ 98</span>
+        <span className="bg-gray-100 px-3 py-1 rounded-full">🔗 24</span>
       </div>
     </article>
   );

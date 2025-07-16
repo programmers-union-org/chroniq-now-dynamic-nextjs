@@ -44,7 +44,9 @@ export default function Navbar() {
           {dateString}
         </div>
         <Link className="cursor-pointer" href={"/"} title="Chroniq Now">
-          <div className="text-5xl font-bold text-red-600 uppercase">chroniq now</div>
+          <div className="text-5xl font-bold text-red-600 uppercase">
+            chroniq now
+          </div>
         </Link>
         <div className="relative w-64">
           <input
@@ -61,7 +63,9 @@ export default function Navbar() {
       {/* mobile top row */}
       <div className="flex md:hidden items-center justify-between px-2 py-2 ">
         <Link className="cursor-pointer" href={"/"} title="Chroniq Now">
-          <div className="text-2xl font-bold text-red-600 uppercase">chroniq now</div>
+          <div className="text-2xl font-bold text-red-600 uppercase">
+            chroniq now
+          </div>
         </Link>
         <div className="flex items-center space-x-2">
           <div className="relative w-32">
@@ -106,11 +110,19 @@ export default function Navbar() {
           {navItems.map((item, i) => (
             <li key={i} className="relative">
               {item === "home" ? (
-                <Link href={"/"} className="flex items-center" title={item.toUpperCase()}>
+                <Link
+                  href={"/"}
+                  className="flex items-center"
+                  title={item.toUpperCase()}
+                >
                   {item.toUpperCase()}
                 </Link>
               ) : (
-                <Link href={`/${item.toLowerCase()}`} className="flex items-center" title={item.toUpperCase()}>
+                <Link
+                  href={`/${item.toLowerCase()}/`}
+                  className="flex items-center"
+                  title={item.toUpperCase()}
+                >
                   {item.toUpperCase()}
                 </Link>
               )}
@@ -152,11 +164,19 @@ export default function Navbar() {
           {navItems.map((item, i) => (
             <li key={i} className="relative pr-1">
               {item === "home" ? (
-                <Link href={"/"} className="flex items-center" title={item.toUpperCase()}>
+                <Link
+                  href={"/"}
+                  className="flex items-center"
+                  title={item.toUpperCase()}
+                >
                   {item.toUpperCase()}
                 </Link>
               ) : (
-                <Link href={`/${item.toLowerCase()}`} className="flex items-center" title={item.toUpperCase()}>
+                <Link
+                  href={`/${item.toLowerCase()}/`}
+                  className="flex items-center"
+                  title={item.toUpperCase()}
+                >
                   {item.toUpperCase()}
                 </Link>
               )}
@@ -167,11 +187,13 @@ export default function Navbar() {
 
       {/* bottom links on toggle */}
       {menuOpen && (
-        <div className="border-t border-red-100 p-1 md:px-20 md:py-3 ">
+        <div className="border-t border-red-100 p-2 md:px-20 md:py-3 ">
           <ul className="flex flex-wrap gap-x-8 gap-y-3 text-xs md:text-sm font-medium text-gray-900">
             {bottomLinks.map((item, i) => (
               <li key={i}>
-                <Link href="#" title={item}>{item}</Link>
+                <Link href="#" title={item}>
+                  {item}
+                </Link>
               </li>
             ))}
           </ul>
