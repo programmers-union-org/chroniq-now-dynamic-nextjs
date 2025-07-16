@@ -9,11 +9,6 @@ import LoadMoreArticles from "@/components/LoadMoreArticles";
 import type { Article } from "@/types/homepage";
 import type { Metadata } from "next";
 
-// interface CategoryData {
-//   category: string;
-//   articles: Article[];
-// }
-
 export async function generateStaticParams() {
   const dataDir = path.join(process.cwd(), "src", "data");
   const files = await fs.readdir(dataDir);
@@ -124,9 +119,6 @@ export default async function CategoryPage({
   } catch {
     return notFound();
   }
-
-  // wrap into your CategoryData shape
-  // const categoryData: CategoryData = { category, articles };
 
   // pagination / slicing
   const pageArticles = articles.slice(0, 11);
@@ -358,7 +350,7 @@ export default async function CategoryPage({
                   <h3 className="text-base font-bold text-gray-900 line-clamp-3 p-2 mt-0 leading-snug tracking-tight">
                     {item.title}
                   </h3>
-                  <div className="w-30 h-full flex-shrink-0 overflow-hidden">
+                  <div className="w-60 h-full flex-shrink-0 overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.title}

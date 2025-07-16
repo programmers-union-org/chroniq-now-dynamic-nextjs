@@ -24,6 +24,52 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { category, detail: slug } = await params;
   const article = getArticleBySlug(slug);
+  if (
+    category === "politics" &&
+    slug === "bribery-case-collapses-into-minor-campaign-finance-violation"
+  ) {
+    const customTitle =
+      "Wanda Vázquez Bribery Case Collapses - Only Minor Violation Remains";
+    const url = `https://www.chroniqnow.com/${category}/${slug}/`;
+
+    return {
+      title: customTitle,
+      description: article?.shortdescription ?? "Chroniq Now - Global News Hub",
+      metadataBase: new URL("https://www.chroniqnow.com"),
+      alternates: { canonical: url },
+      openGraph: {
+        title: customTitle,
+        description: article?.shortdescription,
+        url,
+        siteName: "Chroniq Now",
+        images: [
+          {
+            url:
+              article?.image ?? "/images/wanda-vazquez-press-conference.webp",
+            width: 1200,
+            height: 630,
+            alt: customTitle,
+          },
+        ],
+        type: "article",
+        locale: "en_US",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: customTitle,
+        description: article?.shortdescription,
+        creator: "@ChroniqNow",
+        images: [
+          article?.image ?? "/images/wanda-vazquez-press-conference.webp",
+        ],
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true },
+      },
+    };
+  }
 
   if (!article) {
     return {
@@ -34,7 +80,7 @@ export async function generateMetadata({
     };
   }
 
-  const url = `https://www.chroniqnow.com/${category}/${slug}`;
+  const url = `https://www.chroniqnow.com/${category}/${slug}/`;
   const title = `${article.title}`;
   const description = article.shortdescription;
   const image = article.image;
@@ -115,17 +161,18 @@ export default async function DetailPage({ params }: DetailPageProps) {
   const isClientSlug =
     category === "politics" &&
     slug === "bribery-case-collapses-into-minor-campaign-finance-violation";
+  let jsonLd: Record<string, unknown> | null = null;
   if (isClientSlug) {
-    const jsonLd = {
+    jsonLd = {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
-      mainEntityOfPage: `https://chroniqnow.com/${category}/${slug}/`,
+      mainEntityOfPage: `https://www.chroniqnow.com/${category}/${slug}/`,
       inLanguage: "en",
-      headline: article.title,
+      headline: "Bribery Case Collapses into Minor Campaign Finance Violation",
       description: article.shortdescription,
-      url: `https://chroniqnow.com/${category}/${slug}/`,
+      url: `https://www.chroniqnow.com/${category}/${slug}/`,
       datePublished: "2025-06-18T00:00:00.000Z ",
-      dateModified: "2025-07-15T00:00:00.000Z",
+      dateModified: "2025-07-16T00:00:00.000Z",
       author: {
         "@type": "Person",
         name: "Jennifer Albright",
@@ -135,7 +182,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
         name: "Chroniq Now",
         logo: {
           "@type": "ImageObject",
-          url: "https://chroniqnow.com/images/ChroniqNow-logo.webp",
+          url: "https://www.chroniqnow.com/images/ChroniqNow-logo.webp",
         },
       },
       image: {
@@ -159,170 +206,265 @@ export default async function DetailPage({ params }: DetailPageProps) {
       ],
       thumbnailUrl: article.image,
     };
+  }
 
-    return (
-      <>
+  return (
+    <>
+      {isClientSlug && jsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <Navbar />
+      )}
+      <Navbar />
 
-        <main className=" w-full  p-2 sm:p-20 py-8">
-          <div className="flex flex-col mb-8 gap-2 sm:pt-3">
-            <nav className="text-sm font-bold text-gray-500 mb-4 lg:mb-0 lg:mr-4">
-              <Link title="Home" href="/" className="hover:text-red-600">
-                HOME
-              </Link>
-              <span className="mx-1">»</span>
-              <Link
-                title={`${category} news`}
-                href={`/${category}`}
-                className="hover:text-red-600"
-              >
-                {category.toUpperCase()}
-              </Link>
-              <span className="mx-1">»</span>
-              <span>{article.title}</span>
-            </nav>
+      <main className=" w-full  p-2 sm:p-20 py-8">
+        <div className="flex flex-col mb-8 gap-2 sm:pt-3">
+          <nav className="text-sm font-bold text-gray-500 mb-4 lg:mb-0 lg:mr-4">
+            <Link title="Home" href="/" className="text-red-600">
+              HOME
+            </Link>
+            <span className="mx-1">»</span>
+            <Link
+              title={`${category} news`}
+              href={`/${category}/`}
+              className="text-red-600"
+            >
+              {category.toUpperCase()}
+            </Link>
+            <span className="mx-1">»</span>
+            <span>{article.title}</span>
+          </nav>
 
-            <div className="flex space-x-4 items-center">
-              <Link
-                title={`${category} news`}
-                href={`/${category}`}
-                className="text-red-600 font-bold"
+          <div className="flex space-x-4 items-center">
+            {/* <Link
+              title={`${category} news`}
+              href={`/${category}`}
+              className="text-red-600 font-bold"
+            >
+              {category.toUpperCase()}
+            </Link> */}
+            <span className="text-teal-600 text-sm">{isClientSlug ? '18th June 2025' : article.date}</span>
+            <span className="inline-block text-xs px-2 py-1 bg-gray-100 text-gray-600  font-semibold">
+              4 min read
+            </span>
+            <div className="flex items-center space-x-2 text-sm text-gray-600 ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 text-gray-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.8}
               >
-                {category.toUpperCase()}
-              </Link>
-              <span className="text-teal-600 text-sm">{article.date}</span>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M16.862 3.487l2.475 2.475a2.121 2.121 0 010 3l-8.485 8.485a4 4 0 01-1.732 1.024l-3.303.942.942-3.303a4 4 0 011.024-1.732l8.485-8.485a2.121 2.121 0 013 0z"
+                />
+              </svg>
+              <span className="font-medium">Jennifer Albright</span>
             </div>
           </div>
+        </div>
 
-          <div className="flex flex-col lg:flex-row w-full">
-            {/* article */}
-            {isClientSlug ? (
-              <ClientDetail />
-            ) : (
-              <article className="w-full lg:w-2/3 lg:pr-8 mb-12 lg:mb-0">
-                <h1 className=" text-3xl sm:text-4xl font-bold mb-6">
-                  {article.title}
-                </h1>
+        <div className="flex flex-col lg:flex-row w-full">
+          {/* article */}
+          {isClientSlug ? (
+            <ClientDetail />
+          ) : (
+            <article className="w-full lg:w-2/3 lg:pr-8 mb-12 lg:mb-0">
+              <h1 className=" text-3xl sm:text-4xl font-bold mb-6">
+                {article.title}
+              </h1>
 
-                <div className="w-full mb-6 overflow-hidden shadow-md">
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    width={1200}
-                    height={600}
-                    className="w-full h-full object-cover "
-                  />
-                </div>
+              <div className="w-full mb-6 overflow-hidden shadow-md">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  width={1200}
+                  height={600}
+                  className="w-full h-full object-cover "
+                />
+              </div>
 
-                <p className="text-lg leading-relaxed mb-6 font-bold">
-                  {article.shortdescription}
+              <p className="text-lg leading-relaxed mb-6 font-bold">
+                {article.shortdescription}
+              </p>
+
+              {article.description && (
+                <p className="text-base leading-relaxed mb-4">
+                  {article.description}
                 </p>
+              )}
+            </article>
+          )}
 
-                {article.description && (
-                  <p className="text-base leading-relaxed mb-4">
-                    {article.description}
-                  </p>
-                )}
-              </article>
-            )}
-
-            {/* latest News */}
-            <aside className="w-full lg:w-1/3 sticky top-45 self-start">
-              <h2 className="text-xl font-semibold mb-4 border-b pb-2">
-                Latest News
-              </h2>
-              <ul className="space-y-4">
-                {latestArticles.slice(0, 5).map((item) => (
-                  <li key={item.slug}>
-                    <Link
-                      title={item.title}
-                      href={`/${item.category}/${item.slug}`}
-                      className="flex items-center shadow-sm hover:bg-gray-50 transition"
-                    >
-                      <div className="w-30 h-20  flex-shrink-0 mr-3 overflow-hidden ">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          width={80}
-                          height={80}
-                          className="object-cover w-full h-full"
-                        />
-                      </div>
-
-                      <div className="flex flex-col">
-                        <span className="text-sm font-bold leading-snug tracking-tight">
-                          {item.title}
-                        </span>
-                        <span className="text-xs text-gray-500 mt-1">
-                          {item.date}
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          </div>
-          {/* author  */}
-          <div className="mt-16 text-center bg-white px-8 py-6 shadow-sm">
-            <p className="text-xs font-medium uppercase tracking-wider text-gray-400 mb-2">
-              Written by
-            </p>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">
-              Jennifer Albright
-            </h3>
-            <p className="text-base text-gray-700 leading-relaxed ">
-              Jennifer Albright is a veteran political correspondent with over
-              two decades of experience reporting on justice, government, and
-              international policy. She’s known for her in-depth analysis and
-              dedication to uncovering stories that matter most to the public.
-            </p>
-          </div>
-
-          {/* more in this category */}
-          <section className="mt-12 w-full pb-3">
-            <h2 className="text-2xl font-semibold mb-6">
-              More in {category.charAt(0).toUpperCase() + category.slice(1)}
+          {/* latest News */}
+          <aside className="w-full lg:w-1/3 sticky top-45 self-start">
+            <h2 className="text-xl font-semibold mb-4 border-b pb-2">
+              Latest News
             </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {moreArticles.map((item, index) => (
-                <li key={`${item.slug}-${index}`}>
+            <ul className="space-y-4">
+              {latestArticles.slice(0, 5).map((item) => (
+                <li key={item.slug}>
                   <Link
                     title={item.title}
-                    href={`/${category}/${item.slug}`}
-                    className="block shadow-sm hover:bg-gray-50 overflow-hidden h-full transition"
+                    href={`/${item.category}/${item.slug}/`}
+                    className="flex items-center shadow-sm hover:bg-gray-50 transition"
                   >
-                    <div className="w-full h-60 sm:h-70 overflow-hidden">
+                    <div className="w-30 h-20  flex-shrink-0 mr-3 overflow-hidden ">
                       <Image
                         src={item.image}
                         alt={item.title}
-                        width={800}
-                        height={320}
+                        width={80}
+                        height={80}
                         className="object-cover w-full h-full"
                       />
                     </div>
 
-                    <div className="p-4">
-                      <h3 className="text-lg font-bold leading-snug tracking-tight mb-2">
+                    <div className="flex flex-col">
+                      <span className="text-sm font-bold leading-snug tracking-tight">
                         {item.title}
-                      </h3>
-                      <p className="text-sm text-gray-500">{item.date}</p>
+                      </span>
+                      <span className="text-xs text-gray-500 mt-1">
+                        {item.date}
+                      </span>
                     </div>
                   </Link>
                 </li>
               ))}
             </ul>
-          </section>
-        </main>
+          </aside>
+        </div>
 
-        <Footer />
-      </>
-    );
-  }
+        {isClientSlug && (
+          <div className="mt-16  pt-10">
+            <h3 className="text-xl font-bold text-gray-900 mb-8 tracking-tight">
+              Last 3 comments
+            </h3>
+
+            <div className="space-y-0">
+              {/* comment 1 */}
+              <div className="flex items-start gap-4 p-4  bg-white shadow-xs border border-gray-100">
+                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-indigo-200 to-purple-300 text-indigo-700 font-bold text-sm shadow-sm">
+                  MD
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-gray-800">
+                      Maria Delgado
+                    </span>
+                    <span className="text-xs text-gray-400">2 hours ago</span>
+                  </div>
+                  <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                    I truly believe Wanda was wrongly targeted. The facts were
+                    never fully presented in the media. Glad the truth came out.
+                  </p>
+                </div>
+              </div>
+
+              {/* comment 2 */}
+              <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
+                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-200 to-green-300 text-emerald-700 font-bold text-sm shadow-sm">
+                  JM
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-gray-800">
+                      Jorge Méndez
+                    </span>
+                    <span className="text-xs text-gray-400">5 hours ago</span>
+                  </div>
+                  <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                    People were too quick to judge. This woman gave years of
+                    service and deserves respect. The justice system worked.
+                  </p>
+                </div>
+              </div>
+
+              {/* comment 3 */}
+              <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
+                <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-pink-200 to-red-300 text-red-700 font-bold text-sm shadow-sm">
+                  IR
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-gray-800">
+                      Isabel Ríos
+                    </span>
+                    <span className="text-xs text-gray-400">Yesterday</span>
+                  </div>
+                  <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                    Watching this case unfold was heartbreaking. So many
+                    assumptions, yet no real evidence. I&apos;m glad Wanda is
+                    cleared.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="  pt-8">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                Leave a Comment
+              </h3>
+
+              <div className="flex flex-col space-y-3">
+                <textarea
+                  placeholder="Write your comment..."
+                  rows={4}
+                  className="w-full border border-gray-300  p-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                />
+
+                <button
+                  type="button"
+                  className="self-end px-4 py-2 bg-blue-600 text-white text-sm font-medium  hover:bg-blue-700 transition"
+                >
+                  Post Comment
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* more in this category */}
+        <section className="mt-12 w-full pb-3">
+          <h2 className="text-2xl font-semibold mb-6">
+            More in {category.charAt(0).toUpperCase() + category.slice(1)}
+          </h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {moreArticles.map((item, index) => (
+              <li key={`${item.slug}-${index}`}>
+                <Link
+                  title={item.title}
+                  href={`/${category}/${item.slug}/`}
+                  className="block shadow-sm hover:bg-gray-50 overflow-hidden h-full transition"
+                >
+                  <div className="w-full h-48 overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={400}
+                      height={250}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+
+                  <div className="p-4">
+                    <h3 className="text-lg font-bold leading-snug tracking-tight mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-500">{item.date}</p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
 }

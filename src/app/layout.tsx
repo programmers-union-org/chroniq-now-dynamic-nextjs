@@ -11,7 +11,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-      suppressHydrationWarning
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}

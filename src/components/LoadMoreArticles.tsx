@@ -27,7 +27,7 @@ export default function LoadMoreArticles({ articles, category }: Props) {
           <Link
             key={item.id}
             title={item.title}
-            href={`/${category}/${item.slug}`}
+            href={`/${category}/${item.slug}/`}
             className="flex items-center overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
           >
             <div className="relative w-24 h-24 flex-shrink-0">
@@ -56,7 +56,7 @@ export default function LoadMoreArticles({ articles, category }: Props) {
           <Link
             key={item.id}
             title={item.title}
-            href={`/${category}/${item.slug}`}
+            href={`/${category}/${item.slug}/`}
             className="flex flex-col h-full overflow-hidden border border-gray-100 shadow-sm"
           >
             <div className="w-full h-48 overflow-hidden">
