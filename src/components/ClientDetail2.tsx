@@ -467,7 +467,7 @@ export default function ClientDetail2() {
         </section>
         <div className="w-full mb-6 overflow-hidden shadow-md">
           <Image
-            src="/images/wanda-vazquez-looking-at-mirror.avif"
+            src="/images/wanda-speaking2.webp"
             alt="Wanda Vázquez Garced looking at mirror"
             width={1200}
             height={600}

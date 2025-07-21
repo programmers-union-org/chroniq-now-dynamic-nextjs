@@ -72,6 +72,55 @@ export async function generateMetadata({
     };
   }
 
+  // client news 2 metadata
+  if (
+    category === "politics" &&
+    slug ===
+      "wanda-vazquez-julio-herrera-velutini-and-mark-rossini-from-federal-indictments-to-misdemeanor-plea-in-campaign-finance-case"
+  ) {
+    const customTitle =
+      "Shocking Turn: Wanda Vázquez, Julio Herrera Velutini, and Mark Rossini Escape Felony Charges in Campaign Finance Scandal!";
+    const url = `https://www.chroniqnow.com/${category}/${slug}/`;
+
+    return {
+      title: customTitle,
+      description: article?.shortdescription ?? "Chroniq Now - Global News Hub",
+      metadataBase: new URL("https://www.chroniqnow.com"),
+      alternates: { canonical: url },
+      openGraph: {
+        title: customTitle,
+        description: article?.shortdescription,
+        url,
+        siteName: "Chroniq Now",
+        images: [
+          {
+            url:
+              article?.image ?? "/images/wanda-vazquez-looking-at-mirror.avif",
+            width: 1200,
+            height: 630,
+            alt: customTitle,
+          },
+        ],
+        type: "article",
+        locale: "en_US",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: customTitle,
+        description: article?.shortdescription,
+        creator: "@ChroniqNow",
+        images: [
+          article?.image ?? "/images/wanda-vazquez-looking-at-mirror.avif",
+        ],
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true },
+      },
+    };
+  }
+
   if (!article) {
     return {
       title: "Chroniq Now",
