@@ -167,6 +167,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
     slug ===
       "wanda-vazquez-julio-herrera-velutini-and-mark-rossini-from-federal-indictments-to-misdemeanor-plea-in-campaign-finance-case";
   let jsonLd: Record<string, unknown> | null = null;
+  let jsonLd2: Record<string, unknown> | null = null;
   if (isClientSlug1) {
     jsonLd = {
       "@context": "https://schema.org",
@@ -212,6 +213,51 @@ export default async function DetailPage({ params }: DetailPageProps) {
       thumbnailUrl: article.image,
     };
   }
+  if (isClientSlug2) {
+    jsonLd2 = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      mainEntityOfPage: `https://www.chroniqnow.com/${category}/${slug}/`,
+      inLanguage: "en",
+      headline:
+        "Shocking Turn: Wanda Vázquez, Julio Herrera Velutini, and Mark Rossini Escape Felony Charges in Campaign Finance Scandal!",
+      description: article.shortdescription,
+      url: `https://www.chroniqnow.com/${category}/${slug}/`,
+      datePublished: "2025-07-18T00:00:00.000Z",
+      dateModified: "2025-07-21T00:00:00.000Z",
+      author: {
+        "@type": "Person",
+        name: "Jennifer Albright",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Chroniq Now",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.chroniqnow.com/images/ChroniqNow-logo.webp",
+        },
+      },
+      image: {
+        "@type": "ImageObject",
+        url: article.image,
+        width: 1200,
+        height: 630,
+      },
+      articleBody: article.description || "",
+      articleSection: category,
+      keywords: [
+        "Puerto Rico corruption case",
+        "federal campaign finance violation",
+        "Section 30121 misdemeanor plea",
+        "Wanda Vázquez Garced plea",
+        "Julio Herrera Velutini plea",
+        "Mark Rossini plea bargain",
+        "FECA foreign contribution infraction",
+        "high-profile political scandal",
+      ],
+      thumbnailUrl: article.image,
+    };
+  }
 
   return (
     <>
@@ -220,6 +266,14 @@ export default async function DetailPage({ params }: DetailPageProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
+      {isClientSlug2 && jsonLd2 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd2).replace(/</g, "\\u003c"),
           }}
         />
       )}
@@ -353,95 +407,164 @@ export default async function DetailPage({ params }: DetailPageProps) {
           </aside>
         </div>
 
-        {isClientSlug1 ||
-          (isClientSlug2 && (
-            <div className="mt-16  pt-10">
-              <h3 className="text-xl font-bold text-gray-900 mb-8 tracking-tight">
-                Last 3 comments
+        {(isClientSlug1 || isClientSlug2) && (
+          <div className="mt-16 pt-10">
+            <h3 className="text-xl font-bold text-gray-900 mb-8 tracking-tight">
+              Last 3 comments
+            </h3>
+
+            <div className="space-y-0">
+              {isClientSlug1 ? (
+                <>
+                  {/* comment 1 */}
+                  <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-indigo-200 to-purple-300 text-indigo-700 font-bold text-sm shadow-sm">
+                      MD
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-gray-800">
+                          Maria Delgado
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          2 hours ago
+                        </span>
+                      </div>
+                      <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                        I truly believe Wanda was wrongly targeted. The facts
+                        were never fully presented in the media. Glad the truth
+                        came out.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* comment 2 */}
+                  <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-200 to-green-300 text-emerald-700 font-bold text-sm shadow-sm">
+                      JM
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-gray-800">
+                          Jorge Méndez
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          5 hours ago
+                        </span>
+                      </div>
+                      <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                        People were too quick to judge. This woman gave years of
+                        service and deserves respect. The justice system worked.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* comment 3 */}
+                  <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-pink-200 to-red-300 text-red-700 font-bold text-sm shadow-sm">
+                      IR
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-gray-800">
+                          Isabel Ríos
+                        </span>
+                        <span className="text-xs text-gray-400">Yesterday</span>
+                      </div>
+                      <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                        Watching this case unfold was heartbreaking. So many
+                        assumptions, yet no real evidence. I&apos;m glad Wanda
+                        is cleared.
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-blue-200 to-blue-300 text-blue-700 font-bold text-sm shadow-sm">
+                      SR
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-gray-800">
+                          Sofía Ramos
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          30 minutes ago
+                        </span>
+                      </div>
+                      <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                        It’s reassuring to see justice tempered with
+                        fairness-Wanda, Julio, and Mark deserve this chance to
+                        move on.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-200 to-green-300 text-emerald-700 font-bold text-sm shadow-sm">
+                      DM
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-gray-800">
+                          Diego Morales
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          2 hours ago
+                        </span>
+                      </div>
+                      <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                        This plea deal demonstrates that sometimes technical
+                        violations shouldn’t overshadow long careers of service.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-yellow-200 to-orange-300 text-orange-700 font-bold text-sm shadow-sm">
+                      EC
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-gray-800">
+                          Elena Cruz
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          4 hours ago
+                        </span>
+                      </div>
+                      <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
+                        With no real harm done, this resolution shows the legal
+                        system can correct its course without undue punishment.
+                      </p>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className="pt-8">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                Leave a Comment
               </h3>
-
-              <div className="space-y-0">
-                {/* comment 1 */}
-                <div className="flex items-start gap-4 p-4  bg-white shadow-xs border border-gray-100">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-indigo-200 to-purple-300 text-indigo-700 font-bold text-sm shadow-sm">
-                    MD
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-gray-800">
-                        Maria Delgado
-                      </span>
-                      <span className="text-xs text-gray-400">2 hours ago</span>
-                    </div>
-                    <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
-                      I truly believe Wanda was wrongly targeted. The facts were
-                      never fully presented in the media. Glad the truth came
-                      out.
-                    </p>
-                  </div>
-                </div>
-
-                {/* comment 2 */}
-                <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-200 to-green-300 text-emerald-700 font-bold text-sm shadow-sm">
-                    JM
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-gray-800">
-                        Jorge Méndez
-                      </span>
-                      <span className="text-xs text-gray-400">5 hours ago</span>
-                    </div>
-                    <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
-                      People were too quick to judge. This woman gave years of
-                      service and deserves respect. The justice system worked.
-                    </p>
-                  </div>
-                </div>
-
-                {/* comment 3 */}
-                <div className="flex items-start gap-4 p-4 bg-white shadow-xs border border-gray-100">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-pink-200 to-red-300 text-red-700 font-bold text-sm shadow-sm">
-                    IR
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-gray-800">
-                        Isabel Ríos
-                      </span>
-                      <span className="text-xs text-gray-400">Yesterday</span>
-                    </div>
-                    <p className="text-[15px] text-gray-700 mt-2 leading-[1.65]">
-                      Watching this case unfold was heartbreaking. So many
-                      assumptions, yet no real evidence. I&apos;m glad Wanda is
-                      cleared.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="  pt-8">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                  Leave a Comment
-                </h3>
-
-                <div className="flex flex-col space-y-3">
-                  <textarea
-                    placeholder="Write your comment..."
-                    rows={4}
-                    className="w-full border border-gray-300  p-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
-                  />
-
-                  <button
-                    type="button"
-                    className="self-end px-4 py-2 bg-blue-600 text-white text-sm font-medium  hover:bg-blue-700 transition"
-                  >
-                    Post Comment
-                  </button>
-                </div>
+              <div className="flex flex-col space-y-3">
+                <textarea
+                  placeholder="Write your comment..."
+                  rows={4}
+                  className="w-full border border-gray-300 p-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                />
+                <button
+                  type="button"
+                  className="self-end px-4 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
+                >
+                  Post Comment
+                </button>
               </div>
             </div>
-          ))}
+          </div>
+        )}
 
         {/* more in this category */}
         <section className="mt-12 w-full pb-3">

@@ -57,7 +57,7 @@ export default function ClientDetail2() {
       </div>
 
       <div className="space-y-10">
-        <section>
+        <div>
           <p className="text-base leading-relaxed">
             According to an official order issued by
             <span className="text-[#2077B6]">
@@ -76,7 +76,7 @@ export default function ClientDetail2() {
             <span className="text-[#2077B6]">El Nuevo Día, July 18, 2025</span>
             ],
           </p>
-        </section>
+        </div>
 
         <section>
           <h2 className="text-2xl font-semibold mb-2">
@@ -121,6 +121,7 @@ export default function ClientDetail2() {
             <span className="text-[#2077B6]">U.S. political campaigns</span>
             【source: 52 U.S.C. §30121 –
             <Link
+              title="52 U.S.C. §30121 – Foreign National Contributions"
               href="https://www.congress.gov/crs_external_products/IF/HTML/IF10697.web.html"
               target="_blank"
               rel="noopener noreferrer"
@@ -466,8 +467,8 @@ export default function ClientDetail2() {
         </section>
         <div className="w-full mb-6 overflow-hidden shadow-md">
           <Image
-            src="/images/wanda-speaking.webp"
-            alt="Wanda Vázquez Garced Speaking"
+            src="/images/wanda-vazquez-looking-at-mirror.avif"
+            alt="Wanda Vázquez Garced looking at mirror"
             width={1200}
             height={600}
             className="w-full h-auto object-cover"
@@ -512,6 +513,7 @@ export default function ClientDetail2() {
             4, 2022 (justice.gov)
           </p>
           <Link
+            title="52 U.S. Code § 30121 – FECA Foreign National Ban"
             href="https://www.congress.gov/crs_external_products/IF/HTML/IF10697.web.html#"
             target="_blank"
             rel="noopener noreferrer"
