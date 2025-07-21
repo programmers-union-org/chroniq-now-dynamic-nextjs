@@ -79,7 +79,7 @@ export async function generateMetadata({
       "wanda-vazquez-julio-herrera-velutini-and-mark-rossini-from-federal-indictments-to-misdemeanor-plea-in-campaign-finance-case"
   ) {
     const customTitle =
-      "Shocking Turn: Wanda Vázquez, Julio Herrera Velutini, and Mark Rossini Escape Felony Charges in Campaign Finance Scandal!";
+      "Wanda Vázquez & Julio Herrera Velutini Escape Felony Charges";
     const url = `https://www.chroniqnow.com/${category}/${slug}/`;
 
     return {
@@ -268,8 +268,7 @@ export default async function DetailPage({ params }: DetailPageProps) {
       "@type": "NewsArticle",
       mainEntityOfPage: `https://www.chroniqnow.com/${category}/${slug}/`,
       inLanguage: "en",
-      headline:
-        "Shocking Turn: Wanda Vázquez, Julio Herrera Velutini, and Mark Rossini Escape Felony Charges in Campaign Finance Scandal!",
+      headline:"Wanda Vázquez & Julio Herrera Velutini Escape Felony Charges",
       description: article.shortdescription,
       url: `https://www.chroniqnow.com/${category}/${slug}/`,
       datePublished: "2025-07-18T00:00:00.000Z",
