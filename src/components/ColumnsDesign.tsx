@@ -16,7 +16,11 @@ export default function ColumnsDesign({ data }: ColumnsProps) {
   return (
     <section className="border-t pt-4">
       <h2 className=" text-2xl sm:text-3xl uppercase text-red-600 mb-4 flex items-center">
-        <Link href={`/${category}/`} title={`${category} news`} className="mr-2">
+        <Link
+          href={`/${category}/`}
+          title={`${category} news`}
+          className="mr-2"
+        >
           {category.toUpperCase()}
         </Link>
         <svg
