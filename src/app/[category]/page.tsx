@@ -347,7 +347,7 @@ export default async function CategoryPage({
                 className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-center justify-between h-40">
-                  <h3 className="text-base font-bold text-gray-900 line-clamp-3 p-2 mt-0 leading-snug tracking-tight">
+                  <h3 className="text-base font-bold text-gray-900 line-clamp-4 p-2 mt-0 leading-snug tracking-tight">
                     {item.title}
                   </h3>
                   <div className="w-60 h-full flex-shrink-0 overflow-hidden">

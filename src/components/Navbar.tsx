@@ -6,7 +6,7 @@ import { FiSearch } from "react-icons/fi";
 
 export default function Navbar() {
   const [dateString, setDateString] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
+  // const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const today = new Date();
@@ -29,12 +29,12 @@ export default function Navbar() {
     "technology",
   ];
 
-  const bottomLinks = [
-    "ABOUT US",
-    "ADVERTISE WITH US",
-    "CONTACT US",
-    "PRIVACY POLICY",
-  ];
+  // const bottomLinks = [
+  //   "ABOUT US",
+  //   "ADVERTISE WITH US",
+  //   "CONTACT US",
+  //   "PRIVACY POLICY",
+  // ];
 
   return (
     <header className="border-b border-red-100 sticky top-0 z-50 bg-white">
@@ -78,7 +78,7 @@ export default function Navbar() {
               <FiSearch className="text-white text-sm" />
             </button>
           </div>
-          <button onClick={() => setMenuOpen(!menuOpen)}>
+          {/* <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? (
               <svg
                 className="w-6 h-6"
@@ -100,7 +100,7 @@ export default function Navbar() {
                 <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -130,7 +130,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <button
+        {/* <button
           className="cursor-pointer"
           onClick={() => setMenuOpen(!menuOpen)}
         >
@@ -155,7 +155,7 @@ export default function Navbar() {
               <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
-        </button>
+        </button> */}
       </div>
 
       {/* mobile scrollable nav */}
@@ -186,7 +186,7 @@ export default function Navbar() {
       </div>
 
       {/* bottom links on toggle */}
-      {menuOpen && (
+      {/* {menuOpen && (
         <div className="border-t border-red-100 p-2 md:px-20 md:py-3 ">
           <ul className="flex flex-wrap gap-x-8 gap-y-3 text-xs md:text-sm font-medium text-gray-900">
             {bottomLinks.map((item, i) => (
@@ -198,7 +198,7 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
     </header>
   );
 }

@@ -28,9 +28,19 @@ export function getAllArticles(): Article[] {
 
 export function getLatestArticles(limit = 5): Article[] {
   return getAllArticles()
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => parseDateDesc(a.date, b.date))
     .slice(0, limit);
 }
+
+// helper function to strip ordinal suffix and sort by date descending
+function parseDateDesc(a: string, b: string): number {
+  const parse = (dateStr: string): number => {
+    const clean = dateStr.replace(/(\d+)(st|nd|rd|th)/, '$1'); // e.g., 10th → 10
+    return new Date(clean).getTime();
+  };
+  return parse(b) - parse(a);
+}
+
 
 //find a single article by its slug.
 
