@@ -16,18 +16,14 @@ export default function Footer() {
         <div className="block md:hidden h-px bg-gray-300 w-4/5 mx-auto mb-6" />
 
         <div className="flex flex-col  md:flex-row md:flex-wrap md:justify-center gap-y-4 gap-x-6 text-center md:text-left text-sm">
-          <div>AdChoices</div>
-          <div>Privacy Statement</div>
-          <div>Your Privacy Choices</div>
-          <div>Cookie Preferences</div>
-          <div>Digital Terms of Sale</div>
-          <div>Terms of Service</div>
-          <div>Contact Us</div>
-          <div>Send Us Feedback</div>
-          <div>Report a Security Issue</div>
-          <div>Jobs At Chroniq</div>
-          <div>Reprints & Permissions</div>
-          <div>Chroniq Press Room</div>
+          <Link href="/">HOME</Link>
+      <Link href="/business">BUSINESS</Link>
+      <Link href="/health">HEALTH</Link>
+      <Link href="/politics">POLITICS</Link>
+      <Link href="/science">SCIENCE</Link>
+      <Link href="/sports">SPORTS</Link>
+      <Link href="/technology">TECHNOLOGY</Link>
+
         </div>
       </div>
     </footer>
