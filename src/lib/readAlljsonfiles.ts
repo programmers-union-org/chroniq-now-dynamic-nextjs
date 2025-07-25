@@ -28,9 +28,11 @@ export function getAllArticles(): Article[] {
 
 export function getLatestArticles(limit = 5): Article[] {
   return getAllArticles()
+    .filter((article) => article.slug !== "wanda-vazquez-julio-herrera-velutini-and-mark-rossini-from-federal-indictments-to-misdemeanor-plea-in-campaign-finance-case")
     .sort((a, b) => parseDateDesc(a.date, b.date))
     .slice(0, limit);
 }
+
 
 // helper function to strip ordinal suffix and sort by date descending
 function parseDateDesc(a: string, b: string): number {
